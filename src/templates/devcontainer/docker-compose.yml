@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  workspace:
+    image: joomla:JOOMLA_VERSION-php8.1-apache
+    volumes:
+      - ../..:/workspace:cached
+      - joomla-data:/var/www/html
+    ports:
+      - "8080:80"
+    environment:
+      JOOMLA_DB_HOST: mysql
+      JOOMLA_DB_USER: joomla
+      JOOMLA_DB_PASSWORD: joomla
+      JOOMLA_DB_NAME: joomla
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - joomla-network
+    command: /bin/sh -c "chown -R www-data:www-data /workspace && apache2-foreground"
+
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: joomla
+      MYSQL_USER: joomla
+      MYSQL_PASSWORD: joomla
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - joomla-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
+      UPLOAD_LIMIT: 256M
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - joomla-network
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
+    networks:
+      - joomla-network
+
+volumes:
+  joomla-data:
+  mysql-data:
+
+networks:
+  joomla-network:
+    driver: bridge

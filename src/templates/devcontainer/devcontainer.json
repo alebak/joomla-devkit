@@ -1,0 +1,62 @@
+{
+  "name": "Joomla Development",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspace",
+
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "xdebug.php-debug",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "whatwedo.twig",
+        "junstyle.php-cs-fixer",
+        "EditorConfig.EditorConfig"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[php]": {
+          "editor.defaultFormatter": "junstyle.php-cs-fixer"
+        },
+        "intelephense.environment.phpVersion": "8.1.0",
+        "php.validate.executablePath": "/usr/local/bin/php"
+      }
+    }
+  },
+
+  "forwardPorts": [8080, 3306, 8081, 1025, 8025],
+
+  "portsAttributes": {
+    "8080": {
+      "label": "Joomla",
+      "onAutoForward": "notify"
+    },
+    "8081": {
+      "label": "phpMyAdmin",
+      "onAutoForward": "silent"
+    },
+    "8025": {
+      "label": "MailHog UI",
+      "onAutoForward": "silent"
+    }
+  },
+
+  "postCreateCommand": "npm install",
+
+  "remoteUser": "www-data"
+}

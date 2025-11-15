@@ -1,0 +1,48 @@
+{
+  "name": "jkit",
+  "version": "0.1.0",
+  "description": "Modern CLI tool for Joomla extension development with Vite and Dev Containers",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "jkit": "./bin/jkit.js"
+  },
+  "scripts": {
+    "dev": "node bin/jkit.js",
+    "test": "node --test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "joomla",
+    "cli",
+    "vite",
+    "devcontainer",
+    "development",
+    "extensions",
+    "component",
+    "module",
+    "plugin",
+    "template"
+  ],
+  "author": "alebak",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^9.2.15",
+    "ora": "^8.0.1",
+    "vite": "^5.1.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "prettier": "^3.2.5"
+  }
+}
