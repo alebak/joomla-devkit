@@ -5,7 +5,7 @@ Modern CLI tool for Joomla extension development with Vite and Dev Containers.
 ## Features
 
 - **Modern Build System**: Powered by Vite for lightning-fast development
-- **Dev Container Ready**: Automatic Docker setup with Joomla, MySQL, phpMyAdmin, and MailHog
+- **Dev Container Ready**: Automatic Docker setup with Joomla, MySQL, phpMyAdmin, and Mailpit
 - **Multi-Extension Support**: Create components, modules, plugins, templates, and libraries
 - **Hot Module Replacement**: Instant updates during development
 - **Production Ready**: Optimized builds with minification and tree-shaking
@@ -142,7 +142,7 @@ When you initialize a project with Dev Container, you get:
 
 - **Joomla**: http://localhost:8080
 - **phpMyAdmin**: http://localhost:8081
-- **MailHog UI**: http://localhost:8025 (email testing)
+- **Mailpit UI**: http://localhost:8025 (email testing)
 - **MySQL**: localhost:3306
   - Database: `joomla`
   - User: `joomla`

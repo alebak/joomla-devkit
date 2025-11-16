@@ -51,7 +51,7 @@
       "onAutoForward": "silent"
     },
     "8025": {
-      "label": "MailHog UI",
+      "label": "Mailpit UI",
       "onAutoForward": "silent"
     }
   },
