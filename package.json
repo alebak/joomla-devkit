@@ -12,7 +12,9 @@
     "test": "node --test",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "joomla",
@@ -40,9 +42,15 @@
     "vite": "^5.1.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-node": "^11.1.0",
-    "prettier": "^3.2.5"
+    "husky": "^9.0.11",
+    "prettier": "^3.2.5",
+    "semantic-release": "^23.0.2"
   }
 }

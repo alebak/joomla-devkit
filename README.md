@@ -224,6 +224,79 @@ export default {
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+### Conventional Commits
+
+This project follows [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages. This enables automatic semantic versioning and changelog generation.
+
+**Commit Message Format:**
+
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+**Types:**
+- `feat`: New feature (triggers minor version bump)
+- `fix`: Bug fix (triggers patch version bump)
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, missing semicolons, etc.)
+- `refactor`: Code refactoring without feature changes
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `build`: Build system or dependency changes
+- `ci`: CI/CD configuration changes
+- `chore`: Other changes that don't modify src or test files
+- `revert`: Reverts a previous commit
+
+**Breaking Changes:**
+
+Add `!` after the type or add `BREAKING CHANGE:` in the footer to trigger a major version bump:
+
+```
+feat!: new CLI structure
+
+BREAKING CHANGE: Commands have been reorganized
+```
+
+**Examples:**
+
+```bash
+feat(cli): add support for library extensions
+fix(build): resolve Vite configuration for PHP files
+docs(readme): update installation instructions
+chore(deps): update dependencies to latest versions
+```
+
+### Commit Validation
+
+Commits are automatically validated using commitlint through a git hook. If your commit message doesn't follow the convention, the commit will be rejected.
+
+To bypass the hook (not recommended):
+```bash
+git commit --no-verify -m "message"
+```
+
+### Semantic Versioning
+
+This project uses [Semantic Versioning](https://semver.org/):
+- **Major (X.0.0)**: Breaking changes
+- **Minor (0.X.0)**: New features (backwards compatible)
+- **Patch (0.0.X)**: Bug fixes (backwards compatible)
+
+Releases are automated via [semantic-release](https://github.com/semantic-release/semantic-release) when commits are pushed to the main branch.
+
+### Development Workflow
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feat/my-feature`
+3. Make your changes
+4. Commit with conventional commits: `git commit -m "feat: add my feature"`
+5. Push to your fork: `git push origin feat/my-feature`
+6. Create a Pull Request
+
 ## License
 
 MIT
