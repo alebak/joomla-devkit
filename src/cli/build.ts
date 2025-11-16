@@ -1,7 +1,11 @@
 import chalk from 'chalk';
 import ora from 'ora';
 
-export async function buildCommand(options) {
+interface BuildOptions {
+  extension?: string;
+}
+
+export async function buildCommand(options: BuildOptions): Promise<void> {
   const spinner = ora('Building for production...').start();
 
   // TODO: Implement production build with Vite

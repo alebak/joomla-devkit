@@ -1,7 +1,12 @@
 import chalk from 'chalk';
 import ora from 'ora';
 
-export async function packageCommand(options) {
+interface PackageOptions {
+  extension?: string;
+  output?: string;
+}
+
+export async function packageCommand(options: PackageOptions): Promise<void> {
   const spinner = ora('Creating distribution package...').start();
 
   // TODO: Implement package creation

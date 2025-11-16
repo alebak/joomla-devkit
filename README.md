@@ -4,6 +4,7 @@ Modern CLI tool for Joomla extension development with Vite and Dev Containers.
 
 ## Features
 
+- **TypeScript First**: Written in TypeScript with full type safety (JavaScript also supported)
 - **Modern Build System**: Powered by Vite for lightning-fast development
 - **Dev Container Ready**: Automatic Docker setup with Joomla, MySQL, phpMyAdmin, and Mailpit
 - **Multi-Extension Support**: Create components, modules, plugins, templates, and libraries
@@ -205,6 +206,7 @@ export default {
 
 | Feature | joomla-gulp | jkit |
 |---------|-------------|------|
+| Language | JavaScript | TypeScript |
 | Build System | Gulp | Vite |
 | Speed | Moderate | Very Fast |
 | HMR | No | Yes |
@@ -212,6 +214,7 @@ export default {
 | Docker Setup | Manual | Automatic |
 | CLI | No | Yes |
 | Extension Scaffolding | Manual | Automatic |
+| Type Safety | No | Yes |
 | Modern JavaScript | Limited | Full ES6+ |
 
 ## Requirements

@@ -7,6 +7,9 @@ pnpm-lock.yaml
 # Build outputs
 dist/
 *.zip
+*.tsbuildinfo
+*.js.map
+*.d.ts.map
 
 # Logs
 logs/

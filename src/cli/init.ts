@@ -9,20 +9,32 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export async function initCommand(name, options) {
+interface InitOptions {
+  joomlaVersion?: string;
+  devcontainer?: boolean;
+}
+
+interface ProjectConfig {
+  author: string;
+  email: string;
+  joomlaVersion: string;
+  useDevContainer: boolean;
+}
+
+export async function initCommand(name: string | undefined, options: InitOptions): Promise<void> {
   console.log(chalk.blue('Initializing new Joomla project...\n'));
 
   let projectName = name;
 
   // If no name provided, ask for it
   if (!projectName) {
-    const answers = await inquirer.prompt([
+    const answers = await inquirer.prompt<{ projectName: string }>([
       {
         type: 'input',
         name: 'projectName',
         message: 'Project name:',
         default: 'my-joomla-extension',
-        validate: (input) => {
+        validate: (input: string) => {
           if (!input) return 'Project name is required';
           if (!/^[a-z0-9-_]+$/.test(input))
             return 'Project name must contain only lowercase letters, numbers, hyphens and underscores';
@@ -34,7 +46,7 @@ export async function initCommand(name, options) {
   }
 
   // Ask additional questions
-  const config = await inquirer.prompt([
+  const config = await inquirer.prompt<ProjectConfig>([
     {
       type: 'input',
       name: 'author',
@@ -86,7 +98,7 @@ export async function initCommand(name, options) {
       spinner.text = 'Setting up Dev Container...';
       const devcontainerTemplatePath = path.join(
         __dirname,
-        '../templates/devcontainer'
+        '../../templates/devcontainer'
       );
       await fs.copy(
         devcontainerTemplatePath,
@@ -229,7 +241,9 @@ dist/
     console.log(chalk.white('  jkit create component com_mycomponent\n'));
   } catch (error) {
     spinner.fail(chalk.red('Failed to create project'));
-    console.error(chalk.red(error.message));
+    if (error instanceof Error) {
+      console.error(chalk.red(error.message));
+    }
     process.exit(1);
   }
 }

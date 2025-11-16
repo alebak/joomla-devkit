@@ -7,19 +7,19 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 // Commands
-import { initCommand } from '../src/cli/init.js';
-import { createCommand } from '../src/cli/create.js';
-import { devCommand } from '../src/cli/dev.js';
-import { buildCommand } from '../src/cli/build.js';
-import { packageCommand } from '../src/cli/package.js';
+import { initCommand } from '../cli/init.js';
+import { createCommand } from '../cli/create.js';
+import { devCommand } from '../cli/dev.js';
+import { buildCommand } from '../cli/build.js';
+import { packageCommand } from '../cli/package.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Read package.json for version
 const packageJson = JSON.parse(
-  readFileSync(join(__dirname, '../package.json'), 'utf-8')
-);
+  readFileSync(join(__dirname, '../../package.json'), 'utf-8')
+) as { version: string };
 
 console.log(chalk.cyan.bold('\n🚀 jkit - Joomla Development Kit\n'));
 

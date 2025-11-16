@@ -1,7 +1,11 @@
 import chalk from 'chalk';
 import ora from 'ora';
 
-export async function devCommand(options) {
+interface DevOptions {
+  port?: string;
+}
+
+export async function devCommand(options: DevOptions): Promise<void> {
   const spinner = ora('Starting development server...').start();
 
   // TODO: Implement dev server with Vite
