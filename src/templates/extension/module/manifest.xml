@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="{{CLIENT}}" method="upgrade">
+    <name>{{MOD_NAME}}</name>
+    <creationDate>{{CREATION_DATE}}</creationDate>
+    <author>{{AUTHOR}}</author>
+    <authorEmail>{{AUTHOR_EMAIL}}</authorEmail>
+    <authorUrl>{{AUTHOR_URL}}</authorUrl>
+    <copyright>{{COPYRIGHT}}</copyright>
+    <license>{{LICENSE}}</license>
+    <version>{{VERSION}}</version>
+    <description>{{DESCRIPTION}}</description>
+
+    <namespace path="src">{{NAMESPACE}}</namespace>
+
+    <files>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <filename>{{MODULE_NAME}}.xml</filename>
+    </files>
+
+    <media folder="media" destination="{{MODULE_NAME}}">
+        <folder>js</folder>
+        <folder>css</folder>
+        <folder>images</folder>
+    </media>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="example_text"
+                    type="text"
+                    label="MOD_{{MODULE_UPPER}}_FIELD_EXAMPLE_TEXT_LABEL"
+                    description="MOD_{{MODULE_UPPER}}_FIELD_EXAMPLE_TEXT_DESC"
+                    default=""
+                />
+
+                <field
+                    name="layout"
+                    type="modulelayout"
+                    label="JFIELD_ALT_LAYOUT_LABEL"
+                    description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+                />
+
+                <field
+                    name="moduleclass_sfx"
+                    type="textarea"
+                    label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                    description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+                    rows="3"
+                />
+
+                <field
+                    name="cache"
+                    type="list"
+                    label="COM_MODULES_FIELD_CACHING_LABEL"
+                    description="COM_MODULES_FIELD_CACHING_DESC"
+                    default="1">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+
+                <field
+                    name="cache_time"
+                    type="number"
+                    label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                    description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+                    default="900"
+                />
+
+                <field
+                    name="cachemode"
+                    type="hidden"
+                    default="static">
+                    <option value="static"></option>
+                </field>
+            </fieldset>
+
+            <fieldset name="advanced">
+                <field
+                    name="layout"
+                    type="modulelayout"
+                    label="JFIELD_ALT_LAYOUT_LABEL"
+                    description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+                />
+
+                <field
+                    name="moduleclass_sfx"
+                    type="textarea"
+                    label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                    description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+                    rows="3"
+                />
+
+                <field
+                    name="cache"
+                    type="list"
+                    label="COM_MODULES_FIELD_CACHING_LABEL"
+                    description="COM_MODULES_FIELD_CACHING_DESC"
+                    default="1">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+
+                <field
+                    name="cache_time"
+                    type="number"
+                    label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                    description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+                    default="900"
+                />
+
+                <field
+                    name="cachemode"
+                    type="hidden"
+                    default="static">
+                    <option value="static"></option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="{{PLUGIN_GROUP}}" method="upgrade">
+    <name>{{PLG_NAME}}</name>
+    <creationDate>{{CREATION_DATE}}</creationDate>
+    <author>{{AUTHOR}}</author>
+    <authorEmail>{{AUTHOR_EMAIL}}</authorEmail>
+    <authorUrl>{{AUTHOR_URL}}</authorUrl>
+    <copyright>{{COPYRIGHT}}</copyright>
+    <license>{{LICENSE}}</license>
+    <version>{{VERSION}}</version>
+    <description>{{DESCRIPTION}}</description>
+
+    <namespace path="src">{{NAMESPACE}}\Plugin\{{PLUGIN_GROUP_CLASS}}\{{PLUGIN_CLASS}}</namespace>
+
+    <files>
+        <folder>src</folder>
+        <folder>language</folder>
+    </files>
+
+    <media folder="media" destination="plg_{{PLUGIN_GROUP}}_{{PLUGIN_NAME}}">
+        <folder>js</folder>
+        <folder>css</folder>
+    </media>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="example_param"
+                    type="text"
+                    label="PLG_{{PLUGIN_GROUP_UPPER}}_{{PLUGIN_UPPER}}_FIELD_EXAMPLE_LABEL"
+                    description="PLG_{{PLUGIN_GROUP_UPPER}}_{{PLUGIN_UPPER}}_FIELD_EXAMPLE_DESC"
+                    default=""
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

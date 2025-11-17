@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset name="component" label="COM_{{COMPONENT_UPPER}}_CONFIG_COMPONENT_LABEL">
+        <field
+            name="example_param"
+            type="text"
+            label="COM_{{COMPONENT_UPPER}}_CONFIG_EXAMPLE_PARAM_LABEL"
+            description="COM_{{COMPONENT_UPPER}}_CONFIG_EXAMPLE_PARAM_DESC"
+            default=""
+        />
+    </fieldset>
+
+    <fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
+        <field
+            name="rules"
+            type="rules"
+            label="JCONFIG_PERMISSIONS_LABEL"
+            class="inputbox"
+            validate="rules"
+            filter="rules"
+            component="{{COMPONENT_NAME}}"
+            section="component"
+        />
+    </fieldset>
+</config>

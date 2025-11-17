@@ -1,0 +1,85 @@
+/**
+ * {{COM_NAME}} - Main Styles
+ *
+ * @package     {{PACKAGE_NAME}}
+ * @subpackage  {{COMPONENT_NAME}}
+ * @copyright   {{COPYRIGHT}}
+ * @license     {{LICENSE}}
+ */
+
+// Variables
+$primary-color: #0071bc;
+$secondary-color: #68b030;
+$text-color: #333;
+$background-color: #f9f9f9;
+$border-radius: 4px;
+
+// Mixins
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+// Main component styles
+.{{COMPONENT_NAME}} {
+  &-container {
+    padding: 20px;
+    background-color: $background-color;
+    border-radius: $border-radius;
+    @include box-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  &-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid $primary-color;
+
+    h2 {
+      color: $primary-color;
+      font-size: 24px;
+      margin: 0;
+    }
+  }
+
+  &-content {
+    color: $text-color;
+    line-height: 1.6;
+  }
+
+  &-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
+    &--secondary {
+      background-color: $secondary-color;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .{{COMPONENT_NAME}} {
+    &-container {
+      padding: 15px;
+    }
+
+    &-header h2 {
+      font-size: 20px;
+    }
+  }
+}

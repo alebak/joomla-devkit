@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" method="upgrade">
+    <name>{{COM_NAME}}</name>
+    <creationDate>{{CREATION_DATE}}</creationDate>
+    <author>{{AUTHOR}}</author>
+    <authorEmail>{{AUTHOR_EMAIL}}</authorEmail>
+    <authorUrl>{{AUTHOR_URL}}</authorUrl>
+    <copyright>{{COPYRIGHT}}</copyright>
+    <license>{{LICENSE}}</license>
+    <version>{{VERSION}}</version>
+    <description>{{DESCRIPTION}}</description>
+
+    <namespace path="src">{{NAMESPACE}}</namespace>
+
+    <files folder="site">
+        <folder>src</folder>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+    </files>
+
+    <media folder="media" destination="{{COMPONENT_NAME}}">
+        <folder>js</folder>
+        <folder>css</folder>
+        <folder>images</folder>
+    </media>
+
+    <administration>
+        <menu>{{COM_NAME}}</menu>
+        <files folder="admin">
+            <folder>src</folder>
+            <folder>tmpl</folder>
+            <folder>language</folder>
+            <folder>services</folder>
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+        </files>
+    </administration>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+</extension>
