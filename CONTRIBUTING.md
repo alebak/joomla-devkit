@@ -1,5 +1,7 @@
 # Contributing to jkit
 
+**[English](CONTRIBUTING.md)** | **[Español](CONTRIBUTING.es.md)**
+
 Thank you for your interest in contributing to jkit! This document provides guidelines and instructions for contributing.
 
 ## Code of Conduct
