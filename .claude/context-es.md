@@ -78,9 +78,18 @@
   - Mensajes de éxito con próximos pasos
   - Probado exitosamente con componentes
 
-- [x] `jkit dev` - **ESTRUCTURA CREADA** ⚠️
-  - Estructura del comando lista
-  - **FALTA**: Integración con Vite HMR
+- [x] `jkit dev` - **FUNCIONAL** ✅
+  - Servidor de desarrollo con Vite
+  - Hot Module Replacement (HMR) integrado
+  - Auto-detección de extensión única
+  - Selección manual con --extension
+  - Puerto configurable con --port
+  - Generación dinámica de configuración Vite
+  - Entry points automáticos por tipo de extensión
+  - Compilación de TypeScript/SCSS en tiempo real
+  - Source maps para desarrollo
+  - Apagado gracioso (Ctrl+C)
+  - Manejo completo de errores
 
 - [x] `jkit build` - **ESTRUCTURA CREADA** ⚠️
   - Estructura del comando lista
@@ -128,6 +137,16 @@
   - getFileSize() / getDirectorySize() - Tamaños
   - formatBytes() - Formatea bytes a legible
   - listFiles() - Lista archivos recursivamente
+
+- [x] **src/utils/vite-config.ts** - Configurador de Vite
+  - generateViteConfig() - Genera configuración Vite para extensión
+  - getEntryPoints() - Determina entry points por tipo
+  - mergeViteConfig() - Fusiona configuraciones
+  - generateViteConfigFile() - Escribe archivo de configuración
+  - Soporte para desarrollo y producción
+  - SCSS con variables de entorno
+  - HMR con overlay de errores
+  - Minificación y source maps
 
 #### 7. Templates de Extensiones (100% Completado) ✅
 
@@ -178,11 +197,10 @@ Nada actualmente en progreso.
 
 ### ❌ Pendiente (Ver ROADMAP.md)
 
-1. **Comando `dev` con Vite HMR**
-2. **Comando `build` para Producción**
-3. **Comando `package` para Distribución**
-4. **Sistema de Testing con Vitest**
-5. **Templates adicionales y opciones avanzadas**
+1. **Comando `build` para Producción**
+2. **Comando `package` para Distribución**
+3. **Sistema de Testing con Vitest**
+4. **Templates adicionales y opciones avanzadas**
 
 ## 📁 Estructura del Proyecto
 
@@ -205,7 +223,7 @@ joomla-devkit/
 │   ├── cli/                   # Comandos del CLI
 │   │   ├── init.ts           # ✅ FUNCIONAL
 │   │   ├── create.ts         # ✅ FUNCIONAL
-│   │   ├── dev.ts            # ⚠️ PENDIENTE implementación
+│   │   ├── dev.ts            # ✅ FUNCIONAL
 │   │   ├── build.ts          # ⚠️ PENDIENTE implementación
 │   │   └── package.ts        # ⚠️ PENDIENTE implementación
 │   ├── locales/               # Traducciones i18n
@@ -234,7 +252,8 @@ joomla-devkit/
 │       ├── validation.ts      # ✅ Validaciones
 │       ├── variables.ts       # ✅ Generador de variables
 │       ├── template.ts        # ✅ Procesador de templates
-│       └── files.ts           # ✅ Operaciones de archivos
+│       ├── files.ts           # ✅ Operaciones de archivos
+│       └── vite-config.ts     # ✅ Configurador de Vite
 ├── dist/                      # Compilado TypeScript (gitignored)
 ├── tests/                     # Tests (PENDIENTE)
 ├── .commitlintrc.json         # Configuración commitlint
