@@ -105,14 +105,32 @@
   },
   "package": {
     "description": "Crear paquete de distribución (.zip)",
-    "creating": "Creando paquete de distribución...",
-    "notImplemented": "Comando package aún no implementado",
-    "plannedFeatures": "Funcionalidades planeadas:",
-    "features": {
-      "createZip": "Crear .zip con estructura Joomla correcta",
-      "includeManifest": "Incluir manifest XML",
-      "copyAssets": "Copiar recursos compilados",
-      "updateServer": "Generar XML del servidor de actualizaciones"
+    "title": "📦 Empaquetar Extensiones",
+    "packaging": "Empaquetando {{name}}...",
+    "success": "✓ {{name}} empaquetada exitosamente → {{file}}",
+    "failed": "✗ Fallo al empaquetar {{name}}",
+    "errors": {
+      "noConfig": "No se encontró configuración jkit en el directorio actual.",
+      "extensionNotFound": "No se encontró la extensión '{{name}}'.",
+      "noExtensions": "No se encontraron extensiones en el proyecto.",
+      "packageFailed": "Fallo al empaquetar {{name}}"
+    },
+    "info": {
+      "runInit": "Ejecuta 'jkit init' para crear un nuevo proyecto.",
+      "createExtension": "Ejecuta 'jkit create' para crear una extensión.",
+      "packaging": "Empaquetando {{count}} extensión(es)...",
+      "outputDir": "Directorio de salida",
+      "size": "Tamaño",
+      "md5": "MD5",
+      "sha256": "SHA256",
+      "checksumsSaved": "Checksums guardados en: {{path}}"
+    },
+    "summary": {
+      "title": "Resumen del Empaquetado:",
+      "total": "Total",
+      "success": "Exitosos",
+      "failed": "Fallidos",
+      "totalSize": "Tamaño total"
     }
   }
 }

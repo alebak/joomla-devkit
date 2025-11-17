@@ -105,14 +105,32 @@
   },
   "package": {
     "description": "Create distribution package (.zip)",
-    "creating": "Creating distribution package...",
-    "notImplemented": "Package command not yet implemented",
-    "plannedFeatures": "Planned features:",
-    "features": {
-      "createZip": "Create .zip with proper Joomla structure",
-      "includeManifest": "Include manifest XML",
-      "copyAssets": "Copy built assets",
-      "updateServer": "Generate update server XML"
+    "title": "📦 Package Extensions",
+    "packaging": "Packaging {{name}}...",
+    "success": "✓ {{name}} packaged successfully → {{file}}",
+    "failed": "✗ Failed to package {{name}}",
+    "errors": {
+      "noConfig": "No jkit configuration found in current directory.",
+      "extensionNotFound": "Extension '{{name}}' not found.",
+      "noExtensions": "No extensions found in project.",
+      "packageFailed": "Failed to package {{name}}"
+    },
+    "info": {
+      "runInit": "Run 'jkit init' to create a new project.",
+      "createExtension": "Run 'jkit create' to create an extension.",
+      "packaging": "Packaging {{count}} extension(s)...",
+      "outputDir": "Output directory",
+      "size": "Size",
+      "md5": "MD5",
+      "sha256": "SHA256",
+      "checksumsSaved": "Checksums saved to: {{path}}"
+    },
+    "summary": {
+      "title": "Packaging Summary:",
+      "total": "Total",
+      "success": "Success",
+      "failed": "Failed",
+      "totalSize": "Total size"
     }
   }
 }
