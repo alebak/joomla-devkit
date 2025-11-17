@@ -5,6 +5,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { getI18n } from '../utils/i18n.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,7 +23,9 @@ interface ProjectConfig {
 }
 
 export async function initCommand(name: string | undefined, options: InitOptions): Promise<void> {
-  console.log(chalk.blue('Initializing new Joomla project...\n'));
+  const i18n = await getI18n();
+
+  console.log(chalk.blue(i18n.t('commands:init.starting') + '\n'));
 
   let projectName = name;
 
@@ -32,12 +35,12 @@ export async function initCommand(name: string | undefined, options: InitOptions
       {
         type: 'input',
         name: 'projectName',
-        message: 'Project name:',
+        message: i18n.t('common:prompts.projectName'),
         default: 'my-joomla-extension',
         validate: (input: string) => {
-          if (!input) return 'Project name is required';
+          if (!input) return i18n.t('common:validation.projectNameRequired');
           if (!/^[a-z0-9-_]+$/.test(input))
-            return 'Project name must contain only lowercase letters, numbers, hyphens and underscores';
+            return i18n.t('common:validation.projectNameInvalid');
           return true;
         },
       },
@@ -50,26 +53,26 @@ export async function initCommand(name: string | undefined, options: InitOptions
     {
       type: 'input',
       name: 'author',
-      message: 'Author name:',
+      message: i18n.t('common:prompts.authorName'),
       default: 'Your Name',
     },
     {
       type: 'input',
       name: 'email',
-      message: 'Author email:',
+      message: i18n.t('common:prompts.authorEmail'),
       default: '[email protected]',
     },
     {
       type: 'list',
       name: 'joomlaVersion',
-      message: 'Joomla version:',
+      message: i18n.t('common:prompts.joomlaVersion'),
       choices: ['5.0', '4.4', '4.3'],
       default: options.joomlaVersion || '5.0',
     },
     {
       type: 'confirm',
       name: 'useDevContainer',
-      message: 'Setup Dev Container?',
+      message: i18n.t('common:prompts.setupDevContainer'),
       default: options.devcontainer !== false,
     },
   ]);
@@ -78,11 +81,11 @@ export async function initCommand(name: string | undefined, options: InitOptions
 
   // Check if directory exists
   if (await fs.pathExists(projectPath)) {
-    console.error(chalk.red(`\nError: Directory "${projectName}" already exists`));
+    console.error(chalk.red(`\n${i18n.t('common:errors.directoryExists', { name: projectName })}`));
     process.exit(1);
   }
 
-  const spinner = ora('Creating project structure...').start();
+  const spinner = ora(i18n.t('commands:init.creatingStructure')).start();
 
   try {
     // Create project directory
@@ -95,7 +98,7 @@ export async function initCommand(name: string | undefined, options: InitOptions
 
     // Copy Dev Container template if needed
     if (config.useDevContainer) {
-      spinner.text = 'Setting up Dev Container...';
+      spinner.text = i18n.t('commands:init.settingUpDevContainer');
       const devcontainerTemplatePath = path.join(
         __dirname,
         '../../templates/devcontainer'
@@ -156,23 +159,20 @@ export async function initCommand(name: string | undefined, options: InitOptions
     await fs.writeFile(path.join(projectPath, 'jkit.config.js'), jkitConfig);
 
     // Create README.md
+    const devContainerSection = config.useDevContainer
+      ? `### ${i18n.t('commands:init.usingDevContainer')}
+
+${(i18n.t('commands:init.devContainerSteps', { returnObjects: true }) as string[]).map((step: string, index: number) => `${index + 1}. ${step}`).join('\n')}
+`
+      : '';
+
     const readme = `# ${projectName}
 
 Joomla extension project created with jkit.
 
 ## Getting Started
 
-${
-  config.useDevContainer
-    ? `### Using Dev Container (Recommended)
-
-1. Open this project in VS Code
-2. Click "Reopen in Container" when prompted
-3. Wait for the container to build and Joomla to be installed
-4. Access Joomla at http://localhost:8080
-`
-    : ''
-}
+${devContainerSection}
 
 ### Development
 
@@ -228,19 +228,19 @@ dist/
 `;
     await fs.writeFile(path.join(projectPath, '.gitignore'), gitignore);
 
-    spinner.succeed(chalk.green('Project created successfully!'));
+    spinner.succeed(chalk.green(i18n.t('common:success.projectCreated')));
 
-    console.log(chalk.cyan('\n📦 Next steps:\n'));
-    console.log(chalk.white(`  cd ${projectName}`));
+    console.log(chalk.cyan(`\n${i18n.t('common:nextSteps')}\n`));
+    console.log(chalk.white(`  ${i18n.t('commands:init.steps.changeDirectory', { name: projectName })}`));
     if (config.useDevContainer) {
-      console.log(chalk.white('  code .'));
-      console.log(chalk.white('  # Reopen in Dev Container when prompted'));
+      console.log(chalk.white(`  ${i18n.t('commands:init.steps.openInCode')}`));
+      console.log(chalk.white(`  ${i18n.t('commands:init.steps.reopenInContainer')}`));
     } else {
-      console.log(chalk.white('  npm install'));
+      console.log(chalk.white(`  ${i18n.t('commands:init.steps.installDependencies')}`));
     }
-    console.log(chalk.white('  jkit create component com_mycomponent\n'));
+    console.log(chalk.white(`  ${i18n.t('commands:init.steps.createExtension')}\n`));
   } catch (error) {
-    spinner.fail(chalk.red('Failed to create project'));
+    spinner.fail(chalk.red(i18n.t('common:errors.projectCreationFailed')));
     if (error instanceof Error) {
       console.error(chalk.red(error.message));
     }

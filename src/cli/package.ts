@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import ora from 'ora';
+import { getI18n } from '../utils/i18n.js';
 
 interface PackageOptions {
   extension?: string;
@@ -7,14 +8,15 @@ interface PackageOptions {
 }
 
 export async function packageCommand(options: PackageOptions): Promise<void> {
-  const spinner = ora('Creating distribution package...').start();
+  const i18n = await getI18n();
+  const spinner = ora(i18n.t('commands:package.creating')).start();
 
   // TODO: Implement package creation
-  spinner.info(chalk.yellow('Package command not yet implemented'));
+  spinner.info(chalk.yellow(i18n.t('commands:package.notImplemented')));
 
-  console.log(chalk.cyan('\nPlanned features:'));
-  console.log(chalk.white('  - Create .zip with proper Joomla structure'));
-  console.log(chalk.white('  - Include manifest XML'));
-  console.log(chalk.white('  - Copy built assets'));
-  console.log(chalk.white('  - Generate update server XML\n'));
+  console.log(chalk.cyan(`\n${i18n.t('commands:package.plannedFeatures')}`));
+  console.log(chalk.white(`  - ${i18n.t('commands:package.features.createZip')}`));
+  console.log(chalk.white(`  - ${i18n.t('commands:package.features.includeManifest')}`));
+  console.log(chalk.white(`  - ${i18n.t('commands:package.features.copyAssets')}`));
+  console.log(chalk.white(`  - ${i18n.t('commands:package.features.updateServer')}\n`));
 }

@@ -1,0 +1,25 @@
+{
+  "appTitle": "🚀 jkit - Kit de Desarrollo para Joomla",
+  "errors": {
+    "generic": "Ocurrió un error",
+    "directoryExists": "Error: El directorio \"{{name}}\" ya existe",
+    "invalidExtensionType": "Error: Tipo de extensión inválido \"{{type}}\"",
+    "projectCreationFailed": "Falló la creación del proyecto"
+  },
+  "success": {
+    "projectCreated": "¡Proyecto creado exitosamente!"
+  },
+  "prompts": {
+    "projectName": "Nombre del proyecto:",
+    "authorName": "Nombre del autor:",
+    "authorEmail": "Email del autor:",
+    "joomlaVersion": "Versión de Joomla:",
+    "setupDevContainer": "¿Configurar Dev Container?"
+  },
+  "validation": {
+    "projectNameRequired": "El nombre del proyecto es requerido",
+    "projectNameInvalid": "El nombre del proyecto debe contener solo letras minúsculas, números, guiones y guiones bajos"
+  },
+  "nextSteps": "📦 Siguientes pasos:",
+  "validTypes": "Tipos válidos: {{types}}"
+}

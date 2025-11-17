@@ -1,0 +1,70 @@
+{
+  "init": {
+    "description": "Initialize a new Joomla extension project with Dev Container",
+    "starting": "Initializing new Joomla project...",
+    "creatingStructure": "Creating project structure...",
+    "settingUpDevContainer": "Setting up Dev Container...",
+    "steps": {
+      "changeDirectory": "cd {{name}}",
+      "openInCode": "code .",
+      "reopenInContainer": "# Reopen in Dev Container when prompted",
+      "installDependencies": "npm install",
+      "createExtension": "jkit create component com_mycomponent"
+    },
+    "usingDevContainer": "Using Dev Container (Recommended)",
+    "devContainerSteps": [
+      "Open this project in VS Code",
+      "Click \"Reopen in Container\" when prompted",
+      "Wait for the container to build and Joomla to be installed",
+      "Access Joomla at http://localhost:8080"
+    ]
+  },
+  "create": {
+    "description": "Create a new Joomla extension",
+    "creating": "Creating {{type}}: {{name}}...",
+    "notImplemented": "Create command not yet implemented for {{type}}",
+    "plannedFeatures": "Planned features:",
+    "features": {
+      "scaffolding": "Generate extension scaffolding",
+      "manifest": "Create manifest XML",
+      "viteConfig": "Setup Vite configuration",
+      "exampleFiles": "Add example files"
+    }
+  },
+  "dev": {
+    "description": "Start development server with watch mode",
+    "starting": "Starting development server...",
+    "notImplemented": "Dev command not yet implemented",
+    "plannedFeatures": "Planned features:",
+    "features": {
+      "hmr": "Hot Module Replacement (HMR)",
+      "watch": "Watch mode for file changes",
+      "autoRebuild": "Auto-rebuild on save",
+      "liveReload": "Live browser reload"
+    }
+  },
+  "build": {
+    "description": "Build extension for production",
+    "building": "Building for production...",
+    "notImplemented": "Build command not yet implemented",
+    "plannedFeatures": "Planned features:",
+    "features": {
+      "minify": "Minify JavaScript and CSS",
+      "optimize": "Optimize assets",
+      "sourceMaps": "Generate source maps",
+      "treeShaking": "Tree-shaking unused code"
+    }
+  },
+  "package": {
+    "description": "Create distribution package (.zip)",
+    "creating": "Creating distribution package...",
+    "notImplemented": "Package command not yet implemented",
+    "plannedFeatures": "Planned features:",
+    "features": {
+      "createZip": "Create .zip with proper Joomla structure",
+      "includeManifest": "Include manifest XML",
+      "copyAssets": "Copy built assets",
+      "updateServer": "Generate update server XML"
+    }
+  }
+}

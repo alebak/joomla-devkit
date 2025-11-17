@@ -1,0 +1,70 @@
+{
+  "init": {
+    "description": "Inicializar un nuevo proyecto de extensión de Joomla con Dev Container",
+    "starting": "Inicializando nuevo proyecto de Joomla...",
+    "creatingStructure": "Creando estructura del proyecto...",
+    "settingUpDevContainer": "Configurando Dev Container...",
+    "steps": {
+      "changeDirectory": "cd {{name}}",
+      "openInCode": "code .",
+      "reopenInContainer": "# Reabrir en Dev Container cuando se solicite",
+      "installDependencies": "npm install",
+      "createExtension": "jkit create component com_mycomponent"
+    },
+    "usingDevContainer": "Usando Dev Container (Recomendado)",
+    "devContainerSteps": [
+      "Abrir este proyecto en VS Code",
+      "Hacer clic en \"Reabrir en contenedor\" cuando se solicite",
+      "Esperar a que el contenedor se construya y Joomla se instale",
+      "Acceder a Joomla en http://localhost:8080"
+    ]
+  },
+  "create": {
+    "description": "Crear una nueva extensión de Joomla",
+    "creating": "Creando {{type}}: {{name}}...",
+    "notImplemented": "Comando create aún no implementado para {{type}}",
+    "plannedFeatures": "Funcionalidades planeadas:",
+    "features": {
+      "scaffolding": "Generar estructura de la extensión",
+      "manifest": "Crear manifest XML",
+      "viteConfig": "Configurar Vite",
+      "exampleFiles": "Agregar archivos de ejemplo"
+    }
+  },
+  "dev": {
+    "description": "Iniciar servidor de desarrollo con modo watch",
+    "starting": "Iniciando servidor de desarrollo...",
+    "notImplemented": "Comando dev aún no implementado",
+    "plannedFeatures": "Funcionalidades planeadas:",
+    "features": {
+      "hmr": "Hot Module Replacement (HMR)",
+      "watch": "Modo watch para cambios en archivos",
+      "autoRebuild": "Reconstrucción automática al guardar",
+      "liveReload": "Recarga automática del navegador"
+    }
+  },
+  "build": {
+    "description": "Construir extensión para producción",
+    "building": "Construyendo para producción...",
+    "notImplemented": "Comando build aún no implementado",
+    "plannedFeatures": "Funcionalidades planeadas:",
+    "features": {
+      "minify": "Minificar JavaScript y CSS",
+      "optimize": "Optimizar recursos",
+      "sourceMaps": "Generar source maps",
+      "treeShaking": "Tree-shaking de código no utilizado"
+    }
+  },
+  "package": {
+    "description": "Crear paquete de distribución (.zip)",
+    "creating": "Creando paquete de distribución...",
+    "notImplemented": "Comando package aún no implementado",
+    "plannedFeatures": "Funcionalidades planeadas:",
+    "features": {
+      "createZip": "Crear .zip con estructura Joomla correcta",
+      "includeManifest": "Incluir manifest XML",
+      "copyAssets": "Copiar recursos compilados",
+      "updateServer": "Generar XML del servidor de actualizaciones"
+    }
+  }
+}
