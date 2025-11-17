@@ -21,14 +21,34 @@
   },
   "create": {
     "description": "Crear una nueva extensión de Joomla",
+    "title": "Crear Nueva Extensión",
     "creating": "Creando {{type}}: {{name}}...",
-    "notImplemented": "Comando create aún no implementado para {{type}}",
-    "plannedFeatures": "Funcionalidades planeadas:",
-    "features": {
-      "scaffolding": "Generar estructura de la extensión",
-      "manifest": "Crear manifest XML",
-      "viteConfig": "Configurar Vite",
-      "exampleFiles": "Agregar archivos de ejemplo"
+    "success": "¡Extensión {{name}} creada exitosamente!",
+    "nextSteps": "Próximos pasos:",
+    "prompts": {
+      "extensionName": "Nombre de la extensión (para {{type}}):",
+      "pluginGroup": "Grupo del plugin:",
+      "client": "Cliente de la extensión:"
+    },
+    "choices": {
+      "site": "Sitio (frontend)",
+      "administrator": "Administrador (backend)"
+    },
+    "steps": {
+      "reviewFiles": "Revisar archivos generados",
+      "startDev": "- Iniciar servidor de desarrollo",
+      "buildProduction": "- Construir para producción",
+      "createPackage": "- Crear paquete de distribución"
+    },
+    "info": {
+      "location": "Ubicación: {{path}}",
+      "namespace": "Namespace: {{namespace}}"
+    },
+    "errors": {
+      "templateNotFound": "Template no encontrado para el tipo de extensión: {{type}}",
+      "extensionExists": "La extensión {{name}} ya existe en: {{path}}",
+      "invalidPluginGroup": "Grupo de plugin inválido: {{group}}",
+      "failed": "Fallo al crear la extensión"
     }
   },
   "dev": {

@@ -44,11 +44,14 @@ async function main() {
 
   // Create command - Create new extension
   program
-    .command('create <type> <name>')
+    .command('create <type> [name]')
     .description(i18n.t('commands:create.description'))
     .option('-a, --author <author>', 'Extension author')
     .option('-e, --email <email>', 'Author email')
     .option('-l, --license <license>', 'License', 'GPL-2.0-or-later')
+    .option('-n, --namespace <namespace>', 'PHP namespace')
+    .option('-c, --client <client>', 'Client (site/administrator) for modules and templates')
+    .option('-g, --group <group>', 'Plugin group')
     .action(createCommand);
 
   // Dev command - Start development server

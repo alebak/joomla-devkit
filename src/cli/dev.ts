@@ -6,7 +6,7 @@ interface DevOptions {
   port?: string;
 }
 
-export async function devCommand(options: DevOptions): Promise<void> {
+export async function devCommand(_options: DevOptions): Promise<void> {
   const i18n = await getI18n();
   const spinner = ora(i18n.t('commands:dev.starting')).start();
 

@@ -7,7 +7,7 @@ interface PackageOptions {
   output?: string;
 }
 
-export async function packageCommand(options: PackageOptions): Promise<void> {
+export async function packageCommand(_options: PackageOptions): Promise<void> {
   const i18n = await getI18n();
   const spinner = ora(i18n.t('commands:package.creating')).start();
 

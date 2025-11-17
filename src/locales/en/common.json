@@ -4,7 +4,10 @@
     "generic": "An error occurred",
     "directoryExists": "Error: Directory \"{{name}}\" already exists",
     "invalidExtensionType": "Error: Invalid extension type \"{{type}}\"",
-    "projectCreationFailed": "Failed to create project"
+    "invalidExtensionName": "Invalid extension name. Must start with a letter and contain only alphanumeric characters and underscores",
+    "invalidEmail": "Invalid email address",
+    "projectCreationFailed": "Failed to create project",
+    "required": "This field is required"
   },
   "success": {
     "projectCreated": "Project created successfully!"
@@ -14,7 +17,9 @@
     "authorName": "Author name:",
     "authorEmail": "Author email:",
     "joomlaVersion": "Joomla version:",
-    "setupDevContainer": "Setup Dev Container?"
+    "setupDevContainer": "Setup Dev Container?",
+    "license": "License:",
+    "description": "Description:"
   },
   "validation": {
     "projectNameRequired": "Project name is required",

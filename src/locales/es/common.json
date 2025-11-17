@@ -4,7 +4,10 @@
     "generic": "Ocurrió un error",
     "directoryExists": "Error: El directorio \"{{name}}\" ya existe",
     "invalidExtensionType": "Error: Tipo de extensión inválido \"{{type}}\"",
-    "projectCreationFailed": "Falló la creación del proyecto"
+    "invalidExtensionName": "Nombre de extensión inválido. Debe comenzar con una letra y contener solo caracteres alfanuméricos y guiones bajos",
+    "invalidEmail": "Dirección de email inválida",
+    "projectCreationFailed": "Falló la creación del proyecto",
+    "required": "Este campo es requerido"
   },
   "success": {
     "projectCreated": "¡Proyecto creado exitosamente!"
@@ -14,7 +17,9 @@
     "authorName": "Nombre del autor:",
     "authorEmail": "Email del autor:",
     "joomlaVersion": "Versión de Joomla:",
-    "setupDevContainer": "¿Configurar Dev Container?"
+    "setupDevContainer": "¿Configurar Dev Container?",
+    "license": "Licencia:",
+    "description": "Descripción:"
   },
   "validation": {
     "projectNameRequired": "El nombre del proyecto es requerido",

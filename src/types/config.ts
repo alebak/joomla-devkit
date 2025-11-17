@@ -152,15 +152,36 @@ export interface CreateExtensionOptions {
   /** Author email */
   email?: string;
 
+  /** Author URL */
+  url?: string;
+
+  /** Namespace */
+  namespace?: string;
+
+  /** Version */
+  version?: string;
+
+  /** Description */
+  description?: string;
+
+  /** Package name */
+  packageName?: string;
+
   /** License */
   license?: string;
 
   /** Plugin group (for plugins only) */
   group?: string;
 
+  /** Plugin group (alternative name) */
+  pluginGroup?: string;
+
   /** Module position (for modules only) */
   position?: string;
 
-  /** Client side (for modules only) */
+  /** Client side (for modules and templates) */
   client?: 'site' | 'administrator';
+
+  /** Default view (for components only) */
+  defaultView?: string;
 }

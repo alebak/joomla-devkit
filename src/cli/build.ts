@@ -6,7 +6,7 @@ interface BuildOptions {
   extension?: string;
 }
 
-export async function buildCommand(options: BuildOptions): Promise<void> {
+export async function buildCommand(_options: BuildOptions): Promise<void> {
   const i18n = await getI18n();
   const spinner = ora(i18n.t('commands:build.building')).start();
 
