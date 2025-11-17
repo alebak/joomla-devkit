@@ -1,10 +1,13 @@
 # jkit - Joomla Development Kit
 
+**[English](README.md)** | **[Español](README.es.md)**
+
 Modern CLI tool for Joomla extension development with Vite and Dev Containers.
 
 ## Features
 
 - **TypeScript First**: Written in TypeScript with full type safety (JavaScript also supported)
+- **Multilingual**: Full internationalization support (English and Spanish)
 - **Modern Build System**: Powered by Vite for lightning-fast development
 - **Dev Container Ready**: Automatic Docker setup with Joomla, MySQL, phpMyAdmin, and Mailpit
 - **Multi-Extension Support**: Create components, modules, plugins, templates, and libraries
