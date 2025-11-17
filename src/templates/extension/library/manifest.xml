@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="library" method="upgrade">
+    <name>{{LIB_NAME}}</name>
+    <libraryname>{{LIBRARY_NAME}}</libraryname>
+    <creationDate>{{CREATION_DATE}}</creationDate>
+    <author>{{AUTHOR}}</author>
+    <authorEmail>{{AUTHOR_EMAIL}}</authorEmail>
+    <authorUrl>{{AUTHOR_URL}}</authorUrl>
+    <copyright>{{COPYRIGHT}}</copyright>
+    <license>{{LICENSE}}</license>
+    <version>{{VERSION}}</version>
+    <description>{{DESCRIPTION}}</description>
+
+    <namespace path="src">{{NAMESPACE}}</namespace>
+
+    <files folder="src">
+        <folder>.</folder>
+    </files>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/lib_{{LIBRARY_NAME}}.ini</language>
+        <language tag="en-GB">en-GB/lib_{{LIBRARY_NAME}}.sys.ini</language>
+    </languages>
+
+    <media folder="media" destination="lib_{{LIBRARY_NAME}}">
+        <folder>js</folder>
+        <folder>css</folder>
+    </media>
+</extension>

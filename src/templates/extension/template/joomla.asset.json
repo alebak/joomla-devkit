@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "{{TEMPLATE_NAME}}",
+  "version": "{{VERSION}}",
+  "description": "{{DESCRIPTION}}",
+  "license": "{{LICENSE}}",
+  "assets": [
+    {
+      "name": "template.{{TEMPLATE_NAME}}",
+      "type": "style",
+      "uri": "template.min.css"
+    },
+    {
+      "name": "template.{{TEMPLATE_NAME}}",
+      "type": "script",
+      "uri": "template.min.js",
+      "dependencies": [
+        "core"
+      ],
+      "attributes": {
+        "defer": true,
+        "type": "module"
+      }
+    },
+    {
+      "name": "fontawesome",
+      "type": "style",
+      "uri": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    }
+  ]
+}

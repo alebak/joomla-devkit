@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="template" client="{{CLIENT}}">
+    <name>{{TEMPLATE_NAME}}</name>
+    <creationDate>{{CREATION_DATE}}</creationDate>
+    <author>{{AUTHOR}}</author>
+    <authorEmail>{{AUTHOR_EMAIL}}</authorEmail>
+    <authorUrl>{{AUTHOR_URL}}</authorUrl>
+    <copyright>{{COPYRIGHT}}</copyright>
+    <license>{{LICENSE}}</license>
+    <version>{{VERSION}}</version>
+    <description>{{DESCRIPTION}}</description>
+
+    <files>
+        <filename>component.php</filename>
+        <filename>error.php</filename>
+        <filename>index.php</filename>
+        <filename>joomla.asset.json</filename>
+        <filename>offline.php</filename>
+        <filename>templateDetails.xml</filename>
+        <folder>html</folder>
+        <folder>css</folder>
+        <folder>scss</folder>
+        <folder>js</folder>
+        <folder>images</folder>
+        <folder>language</folder>
+    </files>
+
+    <media destination="templates/{{CLIENT}}/{{TEMPLATE_NAME}}" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+        <folder>images</folder>
+    </media>
+
+    <positions>
+        <position>top-a</position>
+        <position>top-b</position>
+        <position>sidebar-left</position>
+        <position>sidebar-right</position>
+        <position>main-top</position>
+        <position>main-bottom</position>
+        <position>breadcrumbs</position>
+        <position>footer</position>
+        <position>debug</position>
+    </positions>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/tpl_{{TEMPLATE_NAME}}.ini</language>
+        <language tag="en-GB">en-GB/tpl_{{TEMPLATE_NAME}}.sys.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+            <fieldset name="advanced">
+                <field
+                    name="logoFile"
+                    type="media"
+                    label="TPL_{{TEMPLATE_UPPER}}_LOGO_LABEL"
+                    description="TPL_{{TEMPLATE_UPPER}}_LOGO_DESC"
+                />
+
+                <field
+                    name="siteTitle"
+                    type="text"
+                    label="TPL_{{TEMPLATE_UPPER}}_SITE_TITLE_LABEL"
+                    description="TPL_{{TEMPLATE_UPPER}}_SITE_TITLE_DESC"
+                    default=""
+                />
+
+                <field
+                    name="siteDescription"
+                    type="textarea"
+                    label="TPL_{{TEMPLATE_UPPER}}_SITE_DESCRIPTION_LABEL"
+                    description="TPL_{{TEMPLATE_UPPER}}_SITE_DESCRIPTION_DESC"
+                    rows="3"
+                />
+
+                <field
+                    name="useFontScheme"
+                    type="groupedlist"
+                    label="TPL_{{TEMPLATE_UPPER}}_FONT_LABEL"
+                    description="TPL_{{TEMPLATE_UPPER}}_FONT_DESC"
+                    default="0"
+                >
+                    <option value="0">JNONE</option>
+                    <group label="TPL_{{TEMPLATE_UPPER}}_FONT_GROUP_LOCAL">
+                        <option value="media/templates/{{CLIENT}}/{{TEMPLATE_NAME}}/css/font-scheme/default.css">TPL_{{TEMPLATE_UPPER}}_FONT_DEFAULT</option>
+                    </group>
+                </field>
+
+                <field
+                    name="colorScheme"
+                    type="list"
+                    label="TPL_{{TEMPLATE_UPPER}}_COLOR_SCHEME_LABEL"
+                    description="TPL_{{TEMPLATE_UPPER}}_COLOR_SCHEME_DESC"
+                    default="default"
+                >
+                    <option value="default">TPL_{{TEMPLATE_UPPER}}_COLOR_SCHEME_DEFAULT</option>
+                    <option value="dark">TPL_{{TEMPLATE_UPPER}}_COLOR_SCHEME_DARK</option>
+                </field>
+
+                <field
+                    name="fluidContainer"
+                    type="radio"
+                    layout="joomla.form.field.radio.switcher"
+                    label="TPL_{{TEMPLATE_UPPER}}_FLUID_LABEL"
+                    description="TPL_{{TEMPLATE_UPPER}}_FLUID_DESC"
+                    default="0"
+                >
+                    <option value="0">JDISABLED</option>
+                    <option value="1">JENABLED</option>
+                </field>
+
+                <field
+                    name="stickyHeader"
+                    type="radio"
+                    layout="joomla.form.field.radio.switcher"
+                    label="TPL_{{TEMPLATE_UPPER}}_STICKY_HEADER_LABEL"
+                    description="TPL_{{TEMPLATE_UPPER}}_STICKY_HEADER_DESC"
+                    default="0"
+                >
+                    <option value="0">JDISABLED</option>
+                    <option value="1">JENABLED</option>
+                </field>
+
+                <field
+                    name="backTop"
+                    type="radio"
+                    layout="joomla.form.field.radio.switcher"
+                    label="TPL_{{TEMPLATE_UPPER}}_BACKTOP_LABEL"
+                    description="TPL_{{TEMPLATE_UPPER}}_BACKTOP_DESC"
+                    default="1"
+                >
+                    <option value="0">JDISABLED</option>
+                    <option value="1">JENABLED</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
