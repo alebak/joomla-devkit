@@ -80,14 +80,27 @@
   },
   "build": {
     "description": "Construir extensión para producción",
-    "building": "Construyendo para producción...",
-    "notImplemented": "Comando build aún no implementado",
-    "plannedFeatures": "Funcionalidades planeadas:",
-    "features": {
-      "minify": "Minificar JavaScript y CSS",
-      "optimize": "Optimizar recursos",
-      "sourceMaps": "Generar source maps",
-      "treeShaking": "Tree-shaking de código no utilizado"
+    "title": "Build de Producción",
+    "building": "Construyendo {{name}}...",
+    "success": "{{name}} ({{type}}) construido exitosamente",
+    "failed": "Fallo al construir {{name}}",
+    "errors": {
+      "noConfig": "No se encontró jkit.config.json en el directorio actual",
+      "noExtensions": "No se encontraron extensiones en el proyecto",
+      "extensionNotFound": "Extensión {{name}} no encontrada",
+      "buildFailed": "Build falló para {{name}}"
+    },
+    "info": {
+      "runInit": "Ejecuta 'jkit init' para crear un nuevo proyecto",
+      "createExtension": "Ejecuta 'jkit create' para crear una extensión",
+      "building": "Construyendo {{count}} extensión(es)...",
+      "outputSize": "Tamaño de salida"
+    },
+    "summary": {
+      "title": "Resumen del Build:",
+      "total": "Total",
+      "success": "Exitosos",
+      "failed": "Fallidos"
     }
   },
   "package": {

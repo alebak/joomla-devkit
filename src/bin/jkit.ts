@@ -67,6 +67,7 @@ async function main() {
     .command('build')
     .description(i18n.t('commands:build.description'))
     .option('-e, --extension <name>', 'Build specific extension')
+    .option('--sourcemap', 'Generate source maps', false)
     .action(buildCommand);
 
   // Package command - Create distribution package
