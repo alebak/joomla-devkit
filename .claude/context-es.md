@@ -103,9 +103,20 @@
   - Resumen con contadores de éxito/fallos
   - Manejo robusto de errores
 
-- [x] `jkit package` - **ESTRUCTURA CREADA** ⚠️
-  - Estructura del comando lista
-  - **FALTA**: Generación de archivos .zip
+- [x] `jkit package` - **FUNCIONAL** ✅
+  - Creación de archivos .zip con estructura Joomla
+  - Generación de checksums MD5 y SHA256
+  - Guardado de checksums en archivo checksums.txt
+  - Extracción de versión desde manifest XML
+  - Exclusión de archivos de desarrollo (.ts, .scss, node_modules)
+  - Directorio staging temporal para preparación
+  - Empaquetado de extensión específica con --extension
+  - Empaquetado de todas las extensiones sin opciones
+  - Directorio de salida configurable con --output
+  - Reporte de tamaño en formato legible
+  - Resumen completo con contadores de éxito/fallos
+  - Limpieza automática de directorios temporales
+  - Manejo robusto de errores
 
 #### 6. Utilidades Implementadas ✅
 - [x] **src/utils/validation.ts** - Validación completa
@@ -205,9 +216,9 @@ Nada actualmente en progreso.
 
 ### ❌ Pendiente (Ver ROADMAP.md)
 
-1. **Comando `package` para Distribución**
-2. **Sistema de Testing con Vitest**
-3. **Templates adicionales y opciones avanzadas**
+1. **Sistema de Testing con Vitest**
+2. **Templates adicionales y opciones avanzadas**
+3. **Comandos adicionales** (watch, serve, lint, test, etc.)
 
 ## 📁 Estructura del Proyecto
 
@@ -232,7 +243,7 @@ joomla-devkit/
 │   │   ├── create.ts         # ✅ FUNCIONAL
 │   │   ├── dev.ts            # ✅ FUNCIONAL
 │   │   ├── build.ts          # ✅ FUNCIONAL
-│   │   └── package.ts        # ⚠️ PENDIENTE implementación
+│   │   └── package.ts        # ✅ FUNCIONAL
 │   ├── locales/               # Traducciones i18n
 │   │   ├── en/               # Inglés
 │   │   │   ├── common.json
@@ -300,14 +311,19 @@ joomla-devkit/
 - **@semantic-release/changelog**: Generación CHANGELOG
 - **@semantic-release/git**: Commits de release
 
+### Build y Assets
+- **Vite**: Build system para desarrollo y producción
+- **archiver**: Creación de archivos ZIP
+- **crypto**: Generación de checksums (MD5, SHA256)
+- **fs-extra**: Operaciones avanzadas de archivos
+
 ### UI/UX
 - **chalk**: Colores en terminal
 - **inquirer**: Prompts interactivos
 - **ora**: Spinners de carga
 
-### Planeado
-- **Vite**: Build system (pendiente integración)
-- **Vitest**: Testing framework (pendiente)
+### Pendiente de Integración
+- **Vitest**: Testing framework (planeado)
 
 ## 🎨 Sistema de Variables de Template
 
@@ -473,27 +489,44 @@ El hook de commitlint validará automáticamente.
 
 Ver archivo **ROADMAP.md** para la lista completa y detallada.
 
+### ✅ Comandos Core Completados
+
+Todos los comandos principales del CLI están completamente implementados y funcionales:
+- ✅ `jkit init` - Inicialización de proyectos
+- ✅ `jkit create` - Creación de extensiones
+- ✅ `jkit dev` - Servidor de desarrollo con HMR
+- ✅ `jkit build` - Build de producción
+- ✅ `jkit package` - Empaquetado para distribución
+
 ### Prioridad Alta 🔴
-1. **Implementar comando `package`** ⚠️ PENDIENTE
-   - Crear estructura de archivos para Joomla
-   - Generar .zip
-   - Validar manifiestos
-   - Checksums
-   - Update server XML (opcional)
+1. **Testing Framework** ⚠️ PENDIENTE
+   - Setup Vitest
+   - Tests unitarios para utilidades (validation, template, files, etc.)
+   - Tests de integración para comandos CLI
+   - Tests E2E para flujo completo
+   - Cobertura mínima >80%
+   - CI/CD con GitHub Actions
 
 ### Prioridad Media 🟡
-2. **Testing**
-   - Setup Vitest
-   - Tests unitarios para utilidades
-   - Tests de integración para comandos CLI
-   - Cobertura >80%
+2. **Comandos Adicionales**
+   - `jkit watch` - Watch mode continuo para desarrollo
+   - `jkit serve` - Servidor local para testing
+   - `jkit lint` - Linting de código de extensiones
+   - `jkit test` - Ejecutar tests de extensiones
+
+3. **Update Server**
+   - Generación de XML para servidor de actualizaciones
+   - Integración con package command
+   - Versionado automático
 
 ### Prioridad Baja 🟢
-3. **Mejoras y Optimizaciones**
-   - Watch mode para comando build
-   - Más templates
-   - Más opciones de configuración
-   - Comandos adicionales (watch, serve, etc.)
+4. **Mejoras y Optimizaciones**
+   - Más templates de extensiones
+   - Plantillas personalizadas por usuario
+   - Configuración avanzada de Vite
+   - Plugins y extensibilidad del CLI
+   - Soporte para múltiples versiones de Joomla
+   - Migración desde joomla-gulp
 
 ## 🐛 Problemas Conocidos
 
