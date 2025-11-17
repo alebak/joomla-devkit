@@ -55,7 +55,7 @@
 - [x] src/types/index.ts - Exports centralizados
 - [x] TSDoc completo en todas las interfaces
 
-#### 5. Comandos CLI (Estructura Base)
+#### 5. Comandos CLI
 - [x] `jkit init` - **FUNCIONAL** ✅
   - Crea nuevo proyecto con estructura completa
   - Genera Dev Container con docker-compose.yml
@@ -64,11 +64,19 @@
   - Soporte para Joomla 3.10, 4.x, 5.x
   - Prompts interactivos traducidos
 
-- [x] `jkit create` - **ESTRUCTURA CREADA** ⚠️
-  - Estructura del comando lista
-  - Validación de tipos de extensión
-  - Mensajes traducidos
-  - **FALTA**: Implementación de generación
+- [x] `jkit create` - **FUNCIONAL** ✅
+  - Generación completa de extensiones
+  - Soporte para todos los tipos: component, module, plugin, template, library
+  - Prompts interactivos para detalles de extensión
+  - Procesamiento completo de templates con variables
+  - Validación de nombres, emails, namespaces
+  - Generación automática de namespace si no se proporciona
+  - Selección de grupo para plugins
+  - Selección de cliente para módulos y templates
+  - Actualización automática de jkit.config.json
+  - Renombrado dinámico de archivos y directorios
+  - Mensajes de éxito con próximos pasos
+  - Probado exitosamente con componentes
 
 - [x] `jkit dev` - **ESTRUCTURA CREADA** ⚠️
   - Estructura del comando lista
@@ -82,7 +90,46 @@
   - Estructura del comando lista
   - **FALTA**: Generación de archivos .zip
 
-#### 6. Templates de Extensiones (100% Completado) ✅
+#### 6. Utilidades Implementadas ✅
+- [x] **src/utils/validation.ts** - Validación completa
+  - validateExtensionName() - Valida nombres por tipo
+  - validateEmail() - Valida direcciones de email
+  - validateUrl() - Valida URLs
+  - validatePluginGroup() - Valida grupos de plugins
+  - validateVersion() - Valida semantic versioning
+  - generateNamespace() - Genera namespace PHP válido
+  - sanitizeClassName() - Sanitiza para nombres de clase
+  - sanitizeFileName() - Sanitiza para nombres de archivo
+
+- [x] **src/utils/variables.ts** - Generador de variables
+  - generateComponentVariables() - Variables de componente
+  - generateModuleVariables() - Variables de módulo
+  - generatePluginVariables() - Variables de plugin
+  - generateTemplateVariables() - Variables de template
+  - generateLibraryVariables() - Variables de librería
+  - generateVariables() - Generador universal por tipo
+  - Generación automática de fecha, copyright, namespace
+
+- [x] **src/utils/template.ts** - Procesador de templates
+  - replaceVariables() - Reemplaza {{VAR}} en strings
+  - processTemplateFile() - Procesa archivo individual
+  - processTemplateDirectory() - Procesa directorios recursivamente
+  - getTemplateDirectory() - Obtiene ruta de template
+  - templateExists() - Verifica existencia de template
+  - listAvailableTemplates() - Lista templates disponibles
+
+- [x] **src/utils/files.ts** - Operaciones de archivos
+  - ensureDir() - Crea directorio recursivamente
+  - pathExists() - Verifica existencia de ruta
+  - copyFileWithRename() - Copia con renombrado dinámico
+  - copyDirectoryWithRename() - Copia directorio con renombrado
+  - readJsonFile() - Lee y parsea JSON
+  - writeJsonFile() - Escribe JSON formateado
+  - getFileSize() / getDirectorySize() - Tamaños
+  - formatBytes() - Formatea bytes a legible
+  - listFiles() - Lista archivos recursivamente
+
+#### 7. Templates de Extensiones (100% Completado) ✅
 
 Todos los templates están completos y listos para usar:
 
@@ -131,12 +178,11 @@ Nada actualmente en progreso.
 
 ### ❌ Pendiente (Ver ROADMAP.md)
 
-1. **Comando `create` - Implementación Completa**
-2. **Utilidades de Procesamiento de Templates**
-3. **Comando `dev` con Vite**
-4. **Comando `build` para Producción**
-5. **Comando `package` para Distribución**
-6. **Sistema de Testing**
+1. **Comando `dev` con Vite HMR**
+2. **Comando `build` para Producción**
+3. **Comando `package` para Distribución**
+4. **Sistema de Testing con Vitest**
+5. **Templates adicionales y opciones avanzadas**
 
 ## 📁 Estructura del Proyecto
 
@@ -158,7 +204,7 @@ joomla-devkit/
 │   │   └── jkit.ts           # CLI principal con i18n
 │   ├── cli/                   # Comandos del CLI
 │   │   ├── init.ts           # ✅ FUNCIONAL
-│   │   ├── create.ts         # ⚠️ PENDIENTE implementación
+│   │   ├── create.ts         # ✅ FUNCIONAL
 │   │   ├── dev.ts            # ⚠️ PENDIENTE implementación
 │   │   ├── build.ts          # ⚠️ PENDIENTE implementación
 │   │   └── package.ts        # ⚠️ PENDIENTE implementación
@@ -184,7 +230,11 @@ joomla-devkit/
 │   │   ├── manifest.ts        # Manifiestos Joomla
 │   │   └── index.ts
 │   └── utils/                 # Utilidades
-│       └── i18n.ts            # Sistema i18n
+│       ├── i18n.ts            # Sistema i18n
+│       ├── validation.ts      # ✅ Validaciones
+│       ├── variables.ts       # ✅ Generador de variables
+│       ├── template.ts        # ✅ Procesador de templates
+│       └── files.ts           # ✅ Operaciones de archivos
 ├── dist/                      # Compilado TypeScript (gitignored)
 ├── tests/                     # Tests (PENDIENTE)
 ├── .commitlintrc.json         # Configuración commitlint
