@@ -53,14 +53,29 @@
   },
   "dev": {
     "description": "Iniciar servidor de desarrollo con modo watch",
+    "title": "Servidor de Desarrollo",
     "starting": "Iniciando servidor de desarrollo...",
-    "notImplemented": "Comando dev aún no implementado",
-    "plannedFeatures": "Funcionalidades planeadas:",
-    "features": {
-      "hmr": "Hot Module Replacement (HMR)",
-      "watch": "Modo watch para cambios en archivos",
-      "autoRebuild": "Reconstrucción automática al guardar",
-      "liveReload": "Recarga automática del navegador"
+    "serverStarted": "¡Servidor de desarrollo iniciado exitosamente!",
+    "errors": {
+      "noConfig": "No se encontró jkit.config.json en el directorio actual",
+      "noExtensions": "No se encontraron extensiones en el proyecto",
+      "multipleExtensions": "Se encontraron múltiples extensiones. Por favor especifica cuál desarrollar",
+      "extensionNotFound": "Extensión {{name}} no encontrada",
+      "failed": "Fallo al iniciar el servidor de desarrollo"
+    },
+    "info": {
+      "runInit": "Ejecuta 'jkit init' para crear un nuevo proyecto",
+      "createExtension": "Ejecuta 'jkit create' para crear una extensión",
+      "autoDetected": "Extensión auto-detectada: {{name}}",
+      "specifyExtension": "Extensiones disponibles: {{names}}",
+      "extensionPath": "Ruta de extensión: {{path}}",
+      "serverRunning": "Servidor ejecutándose:",
+      "url": "URL",
+      "extension": "Extensión",
+      "type": "Tipo",
+      "hmrEnabled": "Hot Module Replacement (HMR) está habilitado",
+      "pressCtrlC": "Presiona Ctrl+C para detener el servidor",
+      "stopping": "Deteniendo servidor de desarrollo..."
     }
   },
   "build": {

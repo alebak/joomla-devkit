@@ -58,6 +58,7 @@ async function main() {
   program
     .command('dev')
     .description(i18n.t('commands:dev.description'))
+    .option('-e, --extension <name>', 'Extension to develop')
     .option('-p, --port <port>', 'Dev server port', '5173')
     .action(devCommand);
 
