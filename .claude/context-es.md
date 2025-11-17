@@ -91,9 +91,17 @@
   - Apagado gracioso (Ctrl+C)
   - Manejo completo de errores
 
-- [x] `jkit build` - **ESTRUCTURA CREADA** ⚠️
-  - Estructura del comando lista
-  - **FALTA**: Build con Vite para producción
+- [x] `jkit build` - **FUNCIONAL** ✅
+  - Build de producción con Vite
+  - Minificación de JavaScript y CSS
+  - Tree-shaking de código no utilizado
+  - Source maps opcionales con --sourcemap
+  - Build de extensión específica con --extension
+  - Build de todas las extensiones sin opciones
+  - Optimización de assets
+  - Muestra tamaño de salida
+  - Resumen con contadores de éxito/fallos
+  - Manejo robusto de errores
 
 - [x] `jkit package` - **ESTRUCTURA CREADA** ⚠️
   - Estructura del comando lista
@@ -197,10 +205,9 @@ Nada actualmente en progreso.
 
 ### ❌ Pendiente (Ver ROADMAP.md)
 
-1. **Comando `build` para Producción**
-2. **Comando `package` para Distribución**
-3. **Sistema de Testing con Vitest**
-4. **Templates adicionales y opciones avanzadas**
+1. **Comando `package` para Distribución**
+2. **Sistema de Testing con Vitest**
+3. **Templates adicionales y opciones avanzadas**
 
 ## 📁 Estructura del Proyecto
 
@@ -224,7 +231,7 @@ joomla-devkit/
 │   │   ├── init.ts           # ✅ FUNCIONAL
 │   │   ├── create.ts         # ✅ FUNCIONAL
 │   │   ├── dev.ts            # ✅ FUNCIONAL
-│   │   ├── build.ts          # ⚠️ PENDIENTE implementación
+│   │   ├── build.ts          # ✅ FUNCIONAL
 │   │   └── package.ts        # ⚠️ PENDIENTE implementación
 │   ├── locales/               # Traducciones i18n
 │   │   ├── en/               # Inglés
@@ -467,43 +474,26 @@ El hook de commitlint validará automáticamente.
 Ver archivo **ROADMAP.md** para la lista completa y detallada.
 
 ### Prioridad Alta 🔴
-1. **Implementar comando `create`**
-   - Procesar templates
-   - Reemplazar variables
-   - Copiar archivos con nombres dinámicos
-   - Generar estructura de directorios
-
-2. **Crear utilidades de template**
-   - Helper para reemplazar placeholders
-   - Copiar recursivo con renombrado
-   - Validaciones
-
-### Prioridad Media 🟡
-3. **Implementar comando `dev`**
-   - Integrar Vite
-   - HMR para assets
-   - Watch mode
-
-4. **Implementar comando `build`**
-   - Compilar TypeScript/JavaScript
-   - Compilar SCSS/CSS
-   - Minificación
-
-5. **Implementar comando `package`**
+1. **Implementar comando `package`** ⚠️ PENDIENTE
    - Crear estructura de archivos para Joomla
    - Generar .zip
    - Validar manifiestos
+   - Checksums
+   - Update server XML (opcional)
+
+### Prioridad Media 🟡
+2. **Testing**
+   - Setup Vitest
+   - Tests unitarios para utilidades
+   - Tests de integración para comandos CLI
+   - Cobertura >80%
 
 ### Prioridad Baja 🟢
-6. **Testing**
-   - Setup Vitest
-   - Tests unitarios
-   - Tests de integración
-
-7. **Mejoras**
+3. **Mejoras y Optimizaciones**
+   - Watch mode para comando build
    - Más templates
    - Más opciones de configuración
-   - Comandos adicionales
+   - Comandos adicionales (watch, serve, etc.)
 
 ## 🐛 Problemas Conocidos
 
