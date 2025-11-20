@@ -279,7 +279,7 @@ Cuando agregues nuevas características:
 
 ## Licencia
 
-Al contribuir, aceptas que tus contribuciones serán licenciadas bajo la Licencia MIT.
+Al contribuir, aceptas que tus contribuciones serán licenciadas bajo la Licencia GPL-2.0-or-later.
 
 ---
 

@@ -212,4 +212,4 @@ You don't need to manually version or create releases!
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+By contributing, you agree that your contributions will be licensed under the GPL-2.0-or-later License.

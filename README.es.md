@@ -228,99 +228,16 @@ export default {
 
 ## Contribuir
 
-¡Las contribuciones son bienvenidas! Por favor, siéntete libre de enviar un Pull Request.
+¡Las contribuciones son bienvenidas! Por favor, lee [CONTRIBUTING.es.md](CONTRIBUTING.es.md) para detalles sobre el código de conducta y el proceso para enviar pull requests.
 
-### Commits Convencionales
+## Roadmap
 
-Este proyecto sigue la especificación de [Conventional Commits](https://www.conventionalcommits.org/) para mensajes de commit. Esto habilita el versionado semántico automático y la generación de changelog.
-
-**Formato del Mensaje de Commit:**
-
-```
-<tipo>(<ámbito>): <asunto>
-
-<cuerpo>
-
-<pie>
-```
-
-**Tipos:**
-- `feat`: Nueva característica (activa bump de versión minor)
-- `fix`: Corrección de bug (activa bump de versión patch)
-- `docs`: Cambios en documentación
-- `style`: Cambios de estilo de código (formato, punto y coma faltante, etc.)
-- `refactor`: Refactorización de código sin cambios de características
-- `perf`: Mejoras de rendimiento
-- `test`: Agregar o actualizar tests
-- `build`: Cambios en sistema de build o dependencias
-- `ci`: Cambios en configuración de CI/CD
-- `chore`: Otros cambios que no modifican archivos src o test
-- `revert`: Revierte un commit anterior
-
-**Cambios Incompatibles (Breaking Changes):**
-
-Agrega `!` después del tipo o agrega `BREAKING CHANGE:` en el pie para activar un bump de versión major:
-
-```
-feat!: nueva estructura CLI
-
-BREAKING CHANGE: Los comandos han sido reorganizados
-```
-
-**Ejemplos:**
-
-```bash
-feat(cli): agregar soporte para extensiones de librería
-fix(build): resolver configuración de Vite para archivos PHP
-docs(readme): actualizar instrucciones de instalación
-chore(deps): actualizar dependencias a últimas versiones
-```
-
-### Validación de Commits
-
-Los commits se validan automáticamente usando commitlint a través de un git hook. Si tu mensaje de commit no sigue la convención, el commit será rechazado.
-
-Para omitir el hook (no recomendado):
-```bash
-git commit --no-verify -m "mensaje"
-```
-
-### Versionado Semántico
-
-Este proyecto usa [Versionado Semántico](https://semver.org/):
-- **Major (X.0.0)**: Cambios incompatibles
-- **Minor (0.X.0)**: Nuevas características (compatibles hacia atrás)
-- **Patch (0.0.X)**: Correcciones de bugs (compatibles hacia atrás)
-
-Los releases se automatizan vía [semantic-release](https://github.com/semantic-release/semantic-release) cuando se pushean commits a la rama main.
-
-### Flujo de Trabajo de Desarrollo
-
-1. Hacer fork del repositorio
-2. Crear una rama de característica: `git checkout -b feat/mi-caracteristica`
-3. Hacer tus cambios
-4. Commit con commits convencionales: `git commit -m "feat: agregar mi característica"`
-5. Push a tu fork: `git push origin feat/mi-caracteristica`
-6. Crear un Pull Request
+Consulta [ROADMAP.md](ROADMAP.md) para el roadmap detallado del proyecto y características planeadas.
 
 ## Licencia
 
-MIT
+GPL-2.0-or-later - Ver archivo [LICENSE](LICENSE) para más detalles.
 
 ## Autor
 
 Creado por alebak
-
-## Roadmap
-
-- [x] Inicialización de proyecto
-- [x] Configuración de Dev Container
-- [ ] Scaffolding de extensiones (component, module, plugin, template, library)
-- [ ] Integración de Vite para assets
-- [ ] Hot Module Replacement
-- [ ] Builds de producción
-- [ ] Creación de paquetes
-- [ ] Auto-instalación en Joomla local
-- [ ] Herramientas de calidad de código (ESLint, PHP CS Fixer)
-- [ ] Integración de framework de testing
-- [ ] Plantillas de CI/CD
