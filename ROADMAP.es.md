@@ -1,6 +1,6 @@
 # 🗺️ Hoja de Ruta jkit
 
-**Última Actualización**: 2025-01-17
+**Última Actualización**: 2025-01-20
 **Versión Actual**: 0.1.0
 **Estado**: 🚧 En Desarrollo Activo
 
@@ -20,109 +20,173 @@
 | Comando CLI: \`dev\` | ✅ Completado | 100% |
 | Comando CLI: \`build\` | ✅ Completado | 100% |
 | Comando CLI: \`package\` | ✅ Completado | 100% |
-| Utilidades de Plantillas | ⚠️ Pendiente | 0% |
-| Integración Vite | ⚠️ Pendiente | 0% |
+| Utilidades de Plantillas | ✅ Completado | 100% |
+| Integración Vite | ✅ Completado | 100% |
 | Marco de Pruebas | ⚠️ Pendiente | 0% |
 
 **Progreso General**: ~70% Completado
 
 ---
 
-## 🔴 Alta Prioridad (v0.2.0)
+## ✅ Características Completadas
 
-### 1. Mejorar Plantillas de Extensiones ⚠️
+### Funcionalidad Principal (100%)
 
-**Objetivo**: Crear plantillas más completas y funcionales para cada tipo de extensión
+Todas las características primarias están completamente implementadas y funcionales:
+
+#### 1. Comandos CLI
+- ✅ **\`jkit init\`** - Inicializar nuevos proyectos con Dev Container
+- ✅ **\`jkit create\`** - Crear extensiones (component, module, plugin, template, library)
+- ✅ **\`jkit dev\`** - Servidor de desarrollo con HMR de Vite
+- ✅ **\`jkit build\`** - Build de producción con optimización
+- ✅ **\`jkit package\`** - Crear paquetes ZIP instalables con checksums
+
+#### 2. Utilidades
+- ✅ \`validation.ts\` - Funciones de validación completas
+- ✅ \`variables.ts\` - Generación de variables para plantillas
+- ✅ \`template.ts\` - Procesamiento y reemplazo de plantillas
+- ✅ \`files.ts\` - Operaciones y manipulación de archivos
+- ✅ \`vite-config.ts\` - Configuración dinámica de Vite
+- ✅ \`i18n.ts\` - Sistema de internacionalización
+
+#### 3. Plantillas de Extensiones
+- ✅ Componente - MVC completo con DI y assets
+- ✅ Módulo - Con parámetros y helpers
+- ✅ Plugin - Arquitectura moderna basada en eventos
+- ✅ Template - Responsive con 9 posiciones de módulos
+- ✅ Librería - Patrón singleton con helpers
+
+#### 4. Infraestructura de Desarrollo
+- ✅ Configuración TypeScript en modo estricto
+- ✅ ESLint + Prettier
+- ✅ Husky + commitlint (Conventional Commits)
+- ✅ Automatización con semantic-release
+- ✅ Soporte bilingüe (Inglés/Español)
+- ✅ Dev Container para desarrollo
+
+---
+
+## 🔴 Alta Prioridad (v0.2.0 - Próximo Lanzamiento)
+
+### 1. Marco de Pruebas ⚠️ CRÍTICO
+
+**Objetivo**: Implementar suite de pruebas completa con Vitest
+
+**Por qué es Crítico**: Las pruebas son esenciales para el lanzamiento v1.0 para garantizar estabilidad y confiabilidad
 
 **Tareas**:
-- [ ] Mejorar plantillas de componentes con ejemplos de MVC
-- [ ] Agregar plantillas de módulos con opciones de parámetros
-- [ ] Completar plantillas de plugins con todos los grupos
-- [ ] Crear plantillas de templates responsivas
-- [ ] Agregar plantillas de librerías con autoload PSR-4
+- [ ] Instalar y configurar Vitest
+- [ ] Configurar estructura de directorios de pruebas (\`tests/\`)
+- [ ] Crear fixtures y mocks de prueba
+- [ ] **Pruebas Unitarias**:
+  - [ ] \`validation.ts\` - Todas las funciones de validación
+  - [ ] \`variables.ts\` - Lógica de generación de variables
+  - [ ] \`template.ts\` - Procesamiento de plantillas
+  - [ ] \`files.ts\` - Operaciones de archivos
+  - [ ] \`vite-config.ts\` - Generación de configuración
+  - [ ] \`i18n.ts\` - Internacionalización
+- [ ] **Pruebas de Integración**:
+  - [ ] Comando \`init\` - Inicialización de proyecto
+  - [ ] Comando \`create\` - Todos los tipos de extensión
+  - [ ] Comando \`dev\` - Inicio del servidor
+  - [ ] Comando \`build\` - Compilación
+  - [ ] Comando \`package\` - Creación de ZIP
+- [ ] Configurar reporte de cobertura de código (objetivo >80%)
+- [ ] Agregar automatización de pruebas al pipeline CI/CD
+- [ ] Documentar guías de pruebas
 
-**Complejidad Estimada**: Media
+**Esfuerzo Estimado**: 2-3 semanas
+**Dependencias**: Ninguna
 
 ---
 
 ## 🟡 Prioridad Media (v0.3.0)
 
-### 2. Integración Completa de Vite ⚠️
+### 2. Comandos CLI Adicionales
 
-**Objetivo**: Mejorar la integración de Vite con características avanzadas
+#### \`jkit watch\` ⚠️
+**Objetivo**: Modo watch continuo para desarrollo
 
 **Tareas**:
-- [ ] Configuración automática de Vite según tipo de extensión
-- [ ] Soporte para múltiples entry points
-- [ ] Optimización de assets para producción
-- [ ] Source maps configurables
-- [ ] Tree-shaking avanzado
+- [ ] Implementar observación de archivos
+- [ ] Auto-recompilación en cambios
+- [ ] Mostrar cambios en terminal
+- [ ] Patrones de observación configurables
 
-**Complejidad Estimada**: Alta
+#### \`jkit install\` ⚠️
+**Objetivo**: Auto-instalar extensión en Joomla local
+
+**Tareas**:
+- [ ] Detectar instalación de Joomla
+- [ ] Desinstalar versión anterior
+- [ ] Instalar nueva versión
+- [ ] Actualizar base de datos si es necesario
+- [ ] Limpiar caché de Joomla
+
+#### \`jkit lint\` ⚠️
+**Objetivo**: Analizar código de extensión
+
+**Tareas**:
+- [ ] Integración de linting PHP
+- [ ] Linting JavaScript/TypeScript
+- [ ] Linting CSS/SCSS
+- [ ] Reglas personalizadas de Joomla
 
 ---
 
-### 3. Auto-instalación en Joomla ⚠️
+### 3. Plantillas Mejoradas
 
-**Objetivo**: Instalar automáticamente extensiones en Joomla local
+#### Mejoras de Plantilla de Componente
+- [ ] Agregar ejemplos de operaciones CRUD
+- [ ] Incluir ejemplos de paginación
+- [ ] Agregar filtrado y ordenamiento
+- [ ] Incluir ejemplos de ACL
 
-**Tareas**:
-- [ ] Detectar instalación de Joomla en Dev Container
-- [ ] Comando \`jkit install\` para instalar extensión
-- [ ] Actualización automática en cambios
-- [ ] Configuración de permisos automática
+#### Variaciones de Plantilla de Plugin
+- [ ] Plugin de autenticación
+- [ ] Plugin de usuario
+- [ ] Plugin de contenido
+- [ ] Plugin de finder
+- [ ] Plugin de campos personalizados
 
-**Complejidad Estimada**: Media
+#### Mejoras de Plantilla de Módulo
+- [ ] Ejemplos de soporte de caché
+- [ ] Carga Ajax
+- [ ] Múltiples opciones de diseño
 
 ---
 
 ## 🟢 Baja Prioridad (v0.4.0+)
 
-### 4. Configuración del Marco de Pruebas ⚠️
+### 4. Características Avanzadas
 
-**Objetivo**: Configurar pruebas integrales con Vitest
+#### Soporte de Servidor de Actualizaciones
+- [ ] Generar XML de actualización
+- [ ] Gestión de versiones
+- [ ] Generación de changelog
+- [ ] Estadísticas de descargas
 
-**Tareas**:
-- [ ] Instalar Vitest y utilidades de prueba
-- [ ] Configurar \`vitest.config.ts\`
-- [ ] Escribir pruebas unitarias para utilidades
-- [ ] Escribir pruebas de integración para comandos CLI
-- [ ] Configurar reporte de cobertura
-- [ ] Agregar pruebas a tubería CI/CD
+#### Plantillas Personalizadas
+- [ ] Soporte de plantillas definidas por usuario
+- [ ] Marketplace de plantillas
+- [ ] Asistente generador de plantillas
 
-**Objetivo de Cobertura de Pruebas**: >80%
+#### Herramientas de Migración
+- [ ] Importar desde joomla-gulp
+- [ ] Convertir extensiones existentes
+- [ ] Migración de versión de Joomla
 
-**Complejidad Estimada**: Media
+#### Herramientas de Calidad de Código
+- [ ] Integración de PHP CS Fixer
+- [ ] Análisis estático con PHPStan
+- [ ] Métricas de complejidad de código
+- [ ] Escaneo de seguridad
 
----
-
-### 5. Herramientas de Calidad de Código ⚠️
-
-**Objetivo**: Agregar herramientas automáticas de calidad de código
-
-**Tareas**:
-- [ ] Configurar ESLint para JavaScript/TypeScript
-- [ ] Configurar PHP CS Fixer para archivos PHP
-- [ ] Configurar Prettier para formateo
-- [ ] Pre-commit hooks con Husky
-- [ ] Análisis estático de código
-
-**Complejidad Estimada**: Baja-Media
-
----
-
-### 6. Plantillas de CI/CD ⚠️
-
-**Objetivo**: Proporcionar plantillas de CI/CD para automatización
-
-**Tareas**:
-- [ ] Plantilla de GitHub Actions
-- [ ] Plantilla de GitLab CI
-- [ ] Plantilla de Bitbucket Pipelines
-- [ ] Scripts de deployment
-- [ ] Automatización de releases
-
-**Complejidad Estimada**: Media
+#### Plantillas CI/CD
+- [ ] Workflows de GitHub Actions
+- [ ] Plantillas de GitLab CI
+- [ ] Bitbucket Pipelines
+- [ ] Despliegue automatizado
 
 ---
 
@@ -130,49 +194,50 @@
 
 ### Documentación
 - [ ] Tutoriales en video
-- [ ] Más ejemplos
+- [ ] Más ejemplos de código
 - [ ] Guía de mejores prácticas
-- [ ] Guía de migración desde otras herramientas
+- [ ] Guías de migración
 - [ ] Documentación de API con TypeDoc
 
 ### Experiencia del Desarrollador
 - [ ] Mejores mensajes de error
-- [ ] Indicadores de progreso (spinners, barras de progreso)
-- [ ] Salida colorida e informativa
-- [ ] Asistente de configuración interactiva
-- [ ] Verificador de actualización automática
+- [ ] Indicadores de progreso
+- [ ] Mejoras de salida coloreada
+- [ ] Asistentes interactivos
+- [ ] Verificador de auto-actualización
 
 ### Rendimiento
-- [ ] Compilaciones paralelas para múltiples extensiones
+- [ ] Builds paralelas para múltiples extensiones
 - [ ] Compilación incremental
-- [ ] Almacenamiento en caché de compilación
-- [ ] Procesamiento de plantilla más rápido
+- [ ] Caché de compilación
+- [ ] Procesamiento de plantillas más rápido
 
 ---
 
 ## 📅 Hitos de Versión
 
-### v0.2.0 - Mejoras de Plantillas (Objetivo: Q1 2025)
-- ✅ Comandos básicos completados
-- ⚠️ Plantillas de extensión mejoradas
-- ⚠️ Utilidades de procesamiento de plantillas
+### v0.2.0 - Pruebas y Estabilidad (Objetivo: Q1 2025)
+- ✅ Comandos principales completados
+- ⚠️ Marco de pruebas
+- ⚠️ Cobertura de código >80%
+- ⚠️ Correcciones de bugs y estabilidad
 
-### v0.3.0 - Desarrollo Avanzado (Objetivo: Q2 2025)
-- ⚠️ Integración completa de Vite
-- ⚠️ Auto-instalación en Joomla
+### v0.3.0 - Características Mejoradas (Objetivo: Q2 2025)
+- ⚠️ Comandos adicionales (watch, install, lint)
+- ⚠️ Plantillas mejoradas
 - ⚠️ Optimizaciones de rendimiento
 
-### v0.4.0 - Pruebas y Calidad (Objetivo: Q2 2025)
-- ⚠️ Marco de pruebas
+### v0.4.0 - Herramientas Avanzadas (Objetivo: Q2-Q3 2025)
+- ⚠️ Soporte de servidor de actualizaciones
+- ⚠️ Plantillas personalizadas
 - ⚠️ Herramientas de calidad de código
-- ⚠️ Plantillas de CI/CD
-- ⚠️ Documentación mejorada
+- ⚠️ Plantillas CI/CD
 
 ### v1.0.0 - Lanzamiento Estable (Objetivo: Q3 2025)
-- Todas las características principales completadas
+- Todas las características principales completadas y probadas
 - Listo para producción
-- Documentación integral
-- Comunidad activa
+- Documentación completa
+- Soporte activo de la comunidad
 
 ---
 
@@ -194,9 +259,11 @@ Ver [CONTRIBUTING.es.md](CONTRIBUTING.es.md) para directrices sobre cómo contri
 - Las fechas son estimaciones y están sujetas a cambios
 - Las características pueden agregarse o eliminarse según comentarios
 - Los números de versión siguen [Control de Versiones Semántico](https://semver.org/)
+- La licencia GPL-2.0-or-later aplica a todas las contribuciones
 
 ---
 
-**Última Actualización**: 2025-01-17
+**Última Actualización**: 2025-01-20
 **Mantenido por**: alebak
 **Repositorio**: https://github.com/alebak/joomla-devkit
+**Licencia**: GPL-2.0-or-later
