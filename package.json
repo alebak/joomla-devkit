@@ -39,7 +39,7 @@
     "template"
   ],
   "author": "alebak",
-  "license": "MIT",
+  "license": "GPL-2.0-or-later",
   "engines": {
     "node": ">=18.0.0"
   },
