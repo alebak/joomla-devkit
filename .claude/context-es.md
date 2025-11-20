@@ -40,8 +40,11 @@
 - [x] README.es.md completo (español)
 - [x] CONTRIBUTING.md (inglés)
 - [x] CONTRIBUTING.es.md (español)
-- [x] LICENSE (MIT)
+- [x] ROADMAP.md (inglés)
+- [x] ROADMAP.es.md (español)
+- [x] LICENSE (GPL-2.0-or-later)
 - [x] Enlaces de selección de idioma
+- [x] Documentación sin duplicaciones (referencias entre archivos)
 
 #### 4. TypeScript Tipos e Interfaces
 - [x] src/types/config.ts - Interfaces de configuración
@@ -282,11 +285,12 @@ joomla-devkit/
 ├── .releaserc.json            # semantic-release
 ├── CONTRIBUTING.md            # Inglés
 ├── CONTRIBUTING.es.md         # Español
-├── LICENSE                    # MIT
+├── LICENSE                    # GPL-2.0-or-later
 ├── package.json
 ├── README.md                  # Inglés
 ├── README.es.md               # Español
-├── ROADMAP.md                 # Hoja de ruta
+├── ROADMAP.md                 # Hoja de ruta (inglés)
+├── ROADMAP.es.md              # Hoja de ruta (español)
 └── tsconfig.json              # TypeScript configuración
 ```
 
@@ -335,7 +339,7 @@ Todos los templates usan un sistema de placeholders que deben ser reemplazados:
 {{AUTHOR_EMAIL}}        - Email del autor
 {{AUTHOR_URL}}          - URL del autor
 {{COPYRIGHT}}           - Información de copyright
-{{LICENSE}}             - Licencia (ej: "GPL-2.0-or-later", "MIT")
+{{LICENSE}}             - Licencia (default: "GPL-2.0-or-later")
 {{VERSION}}             - Versión (ej: "1.0.0")
 {{DESCRIPTION}}         - Descripción de la extensión
 {{CREATION_DATE}}       - Fecha de creación (ej: "January 2025")
