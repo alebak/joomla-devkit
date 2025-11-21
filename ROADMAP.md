@@ -1,6 +1,6 @@
 # 🗺️ jkit Roadmap
 
-**Last Updated**: 2025-01-20
+**Last Updated**: 2025-01-21
 **Current Version**: 0.1.0
 **Status**: 🚧 In Active Development
 
@@ -22,9 +22,9 @@
 | CLI Command: `package` | ✅ Complete | 100% |
 | Template Utilities | ✅ Complete | 100% |
 | Vite Integration | ✅ Complete | 100% |
-| Testing Framework | ⚠️ Pending | 0% |
+| Testing Framework | 🚧 In Progress | 65% |
 
-**Overall Progress**: ~70% Complete
+**Overall Progress**: ~75% Complete
 
 ---
 
@@ -68,34 +68,54 @@ All primary features are fully implemented and functional:
 
 ## 🔴 High Priority (v0.2.0 - Next Release)
 
-### 1. Testing Framework ⚠️ CRITICAL
+### 1. Testing Framework 🚧 IN PROGRESS
 
 **Goal**: Implement comprehensive testing suite with Vitest
 
 **Why Critical**: Testing is essential for v1.0 release to ensure stability and reliability
 
+**Current Status**: **65% Complete** (Phase 2 Done, Phase 3 Started)
+
 **Tasks**:
-- [ ] Install and configure Vitest
-- [ ] Set up test directory structure (`tests/`)
-- [ ] Create test fixtures and mocks
-- [ ] **Unit Tests**:
-  - [ ] `validation.ts` - All validation functions
-  - [ ] `variables.ts` - Variable generation logic
-  - [ ] `template.ts` - Template processing
-  - [ ] `files.ts` - File operations
-  - [ ] `vite-config.ts` - Config generation
-  - [ ] `i18n.ts` - Internationalization
-- [ ] **Integration Tests**:
+- ✅ Install and configure Vitest
+- ✅ Set up test directory structure (`tests/`)
+- ✅ Create test fixtures and mocks
+- ✅ **Phase 1: Foundation (100%)**
+  - ✅ Vitest configuration with coverage thresholds
+  - ✅ Test helpers (fs-helpers, cli-helpers, fixtures)
+  - ✅ memfs integration for file system mocking
+  - ✅ CI/CD pipeline with GitHub Actions
+- ✅ **Phase 2: Unit Tests - Utilities (100%)**
+  - ✅ `validation.ts` - 57 tests, 99.54% coverage
+  - ✅ `variables.ts` - 39 tests, 100% coverage
+  - ✅ `template.ts` - 26 tests, 99.40% coverage
+  - ✅ `files.ts` - 41 tests, 94.66% coverage
+  - ✅ `vite-config.ts` - 24 tests, 100% coverage
+  - ✅ `i18n.ts` - 21 tests, 100% coverage
+  - ✅ **208 tests passing, 98.62% utils coverage**
+- 🚧 **Phase 3: Integration Tests - CLI (15%)**
+  - 🚧 `create` command - 21 validation tests (13 passing)
   - [ ] `init` command - Project initialization
-  - [ ] `create` command - All extension types
   - [ ] `dev` command - Server startup
   - [ ] `build` command - Compilation
   - [ ] `package` command - ZIP creation
-- [ ] Set up code coverage reporting (target >80%)
-- [ ] Add test automation to CI/CD pipeline
+- ✅ Set up code coverage reporting (target >80%)
+- ✅ Add test automation to CI/CD pipeline
 - [ ] Document testing guidelines
 
-**Estimated Effort**: 2-3 weeks
+**Achievements**:
+- 229 total tests implemented
+- 221 tests passing (96.5%)
+- 98.62% statement coverage on utilities
+- 100% function coverage on utilities
+- Comprehensive mocking patterns established
+
+**Next Steps**:
+- Complete Phase 3 CLI tests
+- Achieve >85% coverage on CLI commands
+- Add end-to-end integration tests
+
+**Estimated Remaining Effort**: 1-2 weeks
 **Dependencies**: None
 
 ---
@@ -218,9 +238,9 @@ All primary features are fully implemented and functional:
 
 ### v0.2.0 - Testing & Stability (Target: Q1 2025)
 - ✅ Core commands complete
-- ⚠️ Testing framework
-- ⚠️ Code coverage >80%
-- ⚠️ Bug fixes and stability
+- 🚧 Testing framework (65% - Phase 2 complete)
+- 🚧 Code coverage >80% (98.62% on utils, 43.1% overall)
+- ✅ Bug fixes and stability
 
 ### v0.3.0 - Enhanced Features (Target: Q2 2025)
 - ⚠️ Additional commands (watch, install, lint)
@@ -263,7 +283,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to th
 
 ---
 
-**Last Updated**: 2025-01-20
+**Last Updated**: 2025-01-21
 **Maintained by**: alebak
 **Repository**: https://github.com/alebak/joomla-devkit
 **License**: GPL-2.0-or-later
