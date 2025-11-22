@@ -101,7 +101,7 @@ export async function initCommand(name: string | undefined, options: InitOptions
       spinner.text = i18n.t('commands:init.settingUpDevContainer');
       const devcontainerTemplatePath = path.join(
         __dirname,
-        '../../templates/devcontainer'
+        '../templates/devcontainer'
       );
       await fs.copy(
         devcontainerTemplatePath,
