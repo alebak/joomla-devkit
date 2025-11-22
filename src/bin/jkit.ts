@@ -40,6 +40,8 @@ async function main() {
     .argument('[name]', 'Project name')
     .option('-j, --joomla-version <version>', 'Joomla version', '5.0')
     .option('--no-devcontainer', 'Skip Dev Container setup')
+    .option('-a, --author <author>', 'Project author name')
+    .option('-e, --email <email>', 'Author email address')
     .action(initCommand);
 
   // Create command - Create new extension
@@ -52,6 +54,7 @@ async function main() {
     .option('-n, --namespace <namespace>', 'PHP namespace')
     .option('-c, --client <client>', 'Client (site/administrator) for modules and templates')
     .option('-g, --group <group>', 'Plugin group')
+    .option('-d, --description <description>', 'Extension description')
     .action(createCommand);
 
   // Dev command - Start development server

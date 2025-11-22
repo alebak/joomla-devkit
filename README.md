@@ -79,10 +79,14 @@ Initialize a new Joomla extension project with Dev Container.
 jkit init my-project
 jkit init my-project --joomla-version 4.4
 jkit init my-project --no-devcontainer
+# Non-interactive mode (CI/CD friendly)
+jkit init my-project --author "John Doe" --email "john@example.com" --no-devcontainer
 ```
 
 **Options:**
 - `-j, --joomla-version <version>`: Joomla version (default: "5.0")
+- `-a, --author <author>`: Project author name
+- `-e, --email <email>`: Author email address
 - `--no-devcontainer`: Skip Dev Container setup
 
 ### `jkit create <type> <name>`
@@ -95,12 +99,19 @@ Create a new Joomla extension.
 jkit create component com_mycomponent
 jkit create module mod_mymodule --author "John Doe"
 jkit create plugin system myplugin --license MIT
+# Non-interactive mode (CI/CD friendly)
+jkit create component com_test --author "John Doe" --email "john@example.com" \
+  --description "My test component" --namespace "MyCompany\\Component\\Test"
 ```
 
 **Options:**
 - `-a, --author <author>`: Extension author
 - `-e, --email <email>`: Author email
 - `-l, --license <license>`: License (default: "GPL-2.0-or-later")
+- `-n, --namespace <namespace>`: PHP namespace
+- `-c, --client <client>`: Client (site/administrator) for modules and templates
+- `-g, --group <group>`: Plugin group (for plugins)
+- `-d, --description <description>`: Extension description
 
 ### `jkit dev`
 

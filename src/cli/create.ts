@@ -18,6 +18,7 @@ interface CreateCommandOptions {
   namespace?: string;
   client?: 'site' | 'administrator';
   group?: string;
+  description?: string;
 }
 
 /**
@@ -131,12 +132,14 @@ async function promptForDetails(
   }
 
   // Description
-  questions.push({
-    type: 'input',
-    name: 'description',
-    message: i18n.t('common:prompts.description'),
-    default: `${name} ${type} for Joomla`,
-  });
+  if (!options.description) {
+    questions.push({
+      type: 'input',
+      name: 'description',
+      message: i18n.t('common:prompts.description'),
+      default: `${name} ${type} for Joomla`,
+    });
+  }
 
   const answers = questions.length > 0 ? await inquirer.prompt(questions) : {};
 
@@ -156,7 +159,7 @@ async function promptForDetails(
     url: config?.authorUrl,
     namespace,
     version: '1.0.0',
-    description: answers.description,
+    description: options.description || answers.description || `${name} ${type} for Joomla`,
     license,
     client: answers.client || options.client,
     pluginGroup: answers.group || options.group,

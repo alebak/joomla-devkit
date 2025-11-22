@@ -13,6 +13,8 @@ const __dirname = dirname(__filename);
 interface InitOptions {
   joomlaVersion?: string;
   devcontainer?: boolean;
+  author?: string;
+  email?: string;
 }
 
 interface ProjectConfig {
@@ -49,33 +51,53 @@ export async function initCommand(name: string | undefined, options: InitOptions
   }
 
   // Ask additional questions
-  const config = await inquirer.prompt<ProjectConfig>([
-    {
+  const questions: any[] = [];
+
+  if (!options.author) {
+    questions.push({
       type: 'input',
       name: 'author',
       message: i18n.t('common:prompts.authorName'),
       default: 'Your Name',
-    },
-    {
+    });
+  }
+
+  if (!options.email) {
+    questions.push({
       type: 'input',
       name: 'email',
       message: i18n.t('common:prompts.authorEmail'),
       default: '[email protected]',
-    },
-    {
+    });
+  }
+
+  if (!options.joomlaVersion) {
+    questions.push({
       type: 'list',
       name: 'joomlaVersion',
       message: i18n.t('common:prompts.joomlaVersion'),
       choices: ['5.0', '4.4', '4.3'],
-      default: options.joomlaVersion || '5.0',
-    },
-    {
+      default: '5.0',
+    });
+  }
+
+  if (options.devcontainer !== false && options.devcontainer !== true) {
+    questions.push({
       type: 'confirm',
       name: 'useDevContainer',
       message: i18n.t('common:prompts.setupDevContainer'),
-      default: options.devcontainer !== false,
-    },
-  ]);
+      default: true,
+    });
+  }
+
+  const answers = questions.length > 0 ? await inquirer.prompt(questions) : {};
+
+  const config: ProjectConfig = {
+    author: options.author || answers.author || 'Your Name',
+    email: options.email || answers.email || '[email protected]',
+    joomlaVersion: options.joomlaVersion || answers.joomlaVersion || '5.0',
+    useDevContainer: options.devcontainer !== false ? (answers.useDevContainer ?? true) : false,
+  };
 
   const projectPath = path.join(process.cwd(), projectName);
 
