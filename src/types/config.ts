@@ -1,7 +1,7 @@
 /**
  * jkit configuration types
  *
- * These types define the structure of jkit.config.js files
+ * These types define the structure of jkit.config.json files
  * used in Joomla extension projects.
  */
 

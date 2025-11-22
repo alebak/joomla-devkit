@@ -142,21 +142,20 @@ export async function initCommand(name: string | undefined, options: InitOptions
       spaces: 2,
     });
 
-    // Create jkit.config.js
-    const jkitConfig = `export default {
-  joomlaVersion: '${config.joomlaVersion}',
-  author: '${config.author}',
-  authorEmail: '${config.email}',
-  license: 'GPL-2.0-or-later',
-
-  extensions: {},
-
-  vite: {
-    // Custom Vite configuration
-  }
-};
-`;
-    await fs.writeFile(path.join(projectPath, 'jkit.config.js'), jkitConfig);
+    // Create jkit.config.json
+    const jkitConfig = {
+      joomlaVersion: config.joomlaVersion,
+      author: config.author,
+      authorEmail: config.email,
+      license: 'GPL-2.0-or-later',
+      extensions: {},
+      vite: {
+        // Custom Vite configuration can be added here
+      }
+    };
+    await fs.writeJSON(path.join(projectPath, 'jkit.config.json'), jkitConfig, {
+      spaces: 2,
+    });
 
     // Create README.md
     const devContainerSection = config.useDevContainer
@@ -214,7 +213,7 @@ ${projectName}/
 ├── extensions/         # Extension source code
 ├── src/               # Shared source files
 ├── dist/              # Built files
-└── jkit.config.js     # jkit configuration
+└── jkit.config.json   # jkit configuration
 \`\`\`
 `;
     await fs.writeFile(path.join(projectPath, 'README.md'), readme);
