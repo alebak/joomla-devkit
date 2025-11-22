@@ -126,7 +126,7 @@ describe('variables.ts', () => {
     });
 
     it('should handle admin client', () => {
-      const opts = { ...baseOptions, client: 'administrator' };
+      const opts = { ...baseOptions, client: 'administrator' as const };
       const vars = generateModuleVariables('mymodule', opts);
 
       expect(vars.CLIENT).toBe('administrator');
@@ -223,7 +223,7 @@ describe('variables.ts', () => {
     });
 
     it('should handle admin client', () => {
-      const opts = { ...baseOptions, client: 'administrator' };
+      const opts = { ...baseOptions, client: 'administrator' as const };
       const vars = generateTemplateVariables('mytemplate', opts);
 
       expect(vars.CLIENT).toBe('administrator');

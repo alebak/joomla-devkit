@@ -16,7 +16,6 @@ import type {
 export const defaultExtensionConfig: ExtensionConfig = {
   name: 'test-extension',
   type: 'component',
-  namespace: 'TestCompany\\Component\\TestExtension',
   description: 'Test extension description',
   author: 'Test Author',
   authorEmail: 'test@example.com',
@@ -30,24 +29,22 @@ export const defaultExtensionConfig: ExtensionConfig = {
  * Default jkit config for testing
  */
 export const defaultJkitConfig: JkitConfig = {
-  projectName: 'test-project',
   joomlaVersion: '5.0',
-  extensions: [],
-  buildDir: 'dist',
-  assetsDir: 'assets',
+  author: 'Test Author',
+  authorEmail: 'test@example.com',
+  license: 'GPL-2.0-or-later',
+  extensions: {},
 };
 
 /**
  * Default init project options
  */
 export const defaultInitOptions: InitProjectOptions = {
-  projectName: 'test-project',
+  name: 'test-project',
   joomlaVersion: '5.0',
   author: 'Test Author',
   authorEmail: 'test@example.com',
-  authorUrl: 'https://example.com',
-  license: 'GPL-2.0-or-later',
-  devContainer: true,
+  useDevContainer: true,
 };
 
 /**
@@ -58,8 +55,8 @@ export const defaultCreateOptions: CreateExtensionOptions = {
   name: 'test-component',
   namespace: 'TestCompany\\Component\\TestComponent',
   author: 'Test Author',
-  authorEmail: 'test@example.com',
-  authorUrl: 'https://example.com',
+  email: 'test@example.com',
+  url: 'https://example.com',
   description: 'Test component description',
   license: 'GPL-2.0-or-later',
 };

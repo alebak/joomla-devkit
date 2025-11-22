@@ -32,7 +32,7 @@ vi.mock('fs/promises', () => ({
       return items;
     }),
     copyFile: vi.fn(async (src: string, dest: string) => {
-      const content = vol.readFileSync(src);
+      const content = vol.readFileSync(src, "utf-8");
       vol.writeFileSync(dest, content);
     }),
     rm: vi.fn(async (path: string, options?: any) => {

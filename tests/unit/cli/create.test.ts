@@ -32,7 +32,7 @@ vi.mock('ora', () => ({
 let inquirerAnswers: any = {};
 vi.mock('inquirer', () => ({
   default: {
-    prompt: vi.fn(async (questions: any[]) => inquirerAnswers),
+    prompt: vi.fn(async () => inquirerAnswers),
   },
 }));
 
@@ -79,7 +79,7 @@ vi.mock('fs/promises', () => ({
 }));
 
 // Mock console and process.exit
-const originalProcessExit = process.exit;
+
 
 describe('create.ts', () => {
   let consoleLogSpy: any;
@@ -316,7 +316,7 @@ describe('create.ts', () => {
     });
 
     it('should accept valid plugin groups', async () => {
-      const { createCommand } = await import('@/cli/create');
+      // const { createCommand } = await import('@/cli/create');
 
       const validGroups = [
         'system',

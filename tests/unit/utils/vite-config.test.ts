@@ -11,7 +11,7 @@ describe('vite-config.ts', () => {
   const baseConfig: ExtensionConfig = {
     name: 'testextension',
     type: 'component',
-    namespace: 'Test\\Component\\TestExtension',
+    // namespace: 'Test\\Component\\TestExtension',
     description: 'Test extension',
     author: 'Test Author',
     authorEmail: 'test@example.com',
@@ -416,7 +416,7 @@ describe('vite-config.ts', () => {
       });
 
       it('should preserve plugins from both configs', () => {
-        const mockPlugin1 = { name: 'plugin1' };
+        // const mockPlugin1 = { name: 'plugin1' };
         const mockPlugin2 = { name: 'plugin2' };
 
         const customConfig: ExtensionConfig = {

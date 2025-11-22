@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "dev": "tsx src/bin/jkit.ts",
-    "build": "tsc && npm run copy-assets",
+    "build": "tsc -p tsconfig.build.json && npm run copy-assets",
     "copy-assets": "cp -r src/locales dist/ && cp -r src/templates dist/",
     "build:watch": "tsc --watch",
     "test": "vitest run",
