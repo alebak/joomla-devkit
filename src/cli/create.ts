@@ -293,9 +293,10 @@ export async function createCommand(
   // Generate variables for template processing (name is now guaranteed to be string)
   const variables = generateVariables(extensionType, name!, extensionOptions);
 
-  // Determine output directory
-  const extensionsDir = config?.extensionsDir || 'extensions';
-  const outputDir = path.join(process.cwd(), extensionsDir, extensionType, variables.COMPONENT_NAME || variables.MODULE_NAME || variables.PLUGIN_NAME || variables.TEMPLATE_NAME || variables.LIBRARY_NAME || name);
+  // Determine output directory (flat structure)
+  const srcDir = config?.srcDir || config?.extensionsDir || 'src';
+  const extensionName = name!; // Extension name includes prefix (com_, mod_, etc.)
+  const outputDir = path.join(process.cwd(), srcDir, extensionName);
 
   // Check if extension already exists
   if (await pathExists(outputDir)) {
@@ -309,8 +310,8 @@ export async function createCommand(
   const spinner = ora(i18n.t('commands:create.creating', { type: extensionType, name: name! })).start();
 
   try {
-    // Ensure extensions directory exists
-    await ensureDir(path.join(process.cwd(), extensionsDir, extensionType));
+    // Ensure source directory exists
+    await ensureDir(path.join(process.cwd(), srcDir));
 
     // Get template directory
     const templateDir = getTemplateDirectory(extensionType);

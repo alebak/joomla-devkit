@@ -33,6 +33,7 @@ export const defaultJkitConfig: JkitConfig = {
   author: 'Test Author',
   authorEmail: 'test@example.com',
   license: 'GPL-2.0-or-later',
+  srcDir: 'src',
   extensions: {},
 };
 

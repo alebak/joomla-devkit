@@ -172,39 +172,37 @@ my-project/
 ├── .devcontainer/
 │   ├── devcontainer.json
 │   └── docker-compose.yml
-├── extensions/
-│   ├── com_mycomponent/
-│   ├── mod_mymodule/
-│   └── plg_system_myplugin/
-├── src/
-│   ├── assets/
-│   └── shared/
-├── dist/
-├── jkit.config.js
+├── src/                    # Extension source code
+│   ├── com_mycomponent/   # Components
+│   ├── mod_mymodule/      # Modules
+│   ├── plg_system_myplugin/  # Plugins
+│   ├── tpl_mytemplate/    # Templates
+│   ├── lib_mylibrary/     # Libraries
+│   └── pkg_mypackage/     # Packages
+├── dist/                  # Built packages (.zip files)
+├── jkit.config.json
 └── package.json
 ```
 
 ## Configuration
 
-Edit `jkit.config.js` in your project root:
+Edit `jkit.config.json` in your project root:
 
-```javascript
-export default {
-  joomlaVersion: '5.0',
-  author: 'Your Name',
-  authorEmail: '[email protected]',
-  license: 'GPL-2.0-or-later',
-
-  extensions: {
-    'com_mycomponent': {
-      // Extension-specific config
+```json
+{
+  "joomlaVersion": "5.0",
+  "author": "Your Name",
+  "authorEmail": "[email protected]",
+  "license": "GPL-2.0-or-later",
+  "srcDir": "src",
+  "extensions": {
+    "com_mycomponent": {
+      "type": "component",
+      "name": "com_mycomponent"
     }
   },
-
-  vite: {
-    // Custom Vite configuration
-  }
-};
+  "vite": {}
+}
 ```
 
 ## Development Workflow

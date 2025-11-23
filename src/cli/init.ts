@@ -116,7 +116,6 @@ export async function initCommand(name: string | undefined, options: InitOptions
     // Create basic structure
     await fs.ensureDir(path.join(projectPath, 'src'));
     await fs.ensureDir(path.join(projectPath, 'dist'));
-    await fs.ensureDir(path.join(projectPath, 'extensions'));
 
     // Copy Dev Container template if needed
     if (config.useDevContainer) {
@@ -232,9 +231,14 @@ jkit create library mylib
 \`\`\`
 ${projectName}/
 ├── .devcontainer/      # Dev Container configuration
-├── extensions/         # Extension source code
-├── src/               # Shared source files
-├── dist/              # Built files
+├── src/                # Extension source code
+│   ├── com_*/         # Components
+│   ├── mod_*/         # Modules
+│   ├── plg_*/         # Plugins
+│   ├── tpl_*/         # Templates
+│   ├── lib_*/         # Libraries
+│   └── pkg_*/         # Packages
+├── dist/              # Built packages (.zip files)
 └── jkit.config.json   # jkit configuration
 \`\`\`
 `;

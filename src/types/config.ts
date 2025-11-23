@@ -109,10 +109,10 @@ export interface JkitConfig {
   /** Build output directory */
   outDir?: string;
 
-  /** Source directory */
+  /** Source directory for extensions (default: 'src') */
   srcDir?: string;
 
-  /** Extensions directory */
+  /** @deprecated Use srcDir instead. For backward compatibility only. */
   extensionsDir?: string;
 }
 
