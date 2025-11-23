@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 import type { UserConfig } from 'vite';
 import type { ExtensionType, ExtensionConfig } from '../types/config.js';
 
@@ -20,6 +21,32 @@ export interface ViteConfigOptions {
   mode?: 'development' | 'production';
   /** Port for dev server */
   port?: number;
+}
+
+/**
+ * Resolves CSS file path by checking for .css and .scss extensions
+ *
+ * @param basePath - Base path without extension (or with extension)
+ * @returns Path with detected extension or original .scss path as fallback
+ */
+function resolveCssPath(basePath: string): string {
+  // Remove any existing extension
+  const baseWithoutExt = basePath.replace(/\.(css|scss)$/, '');
+
+  // Check for .css first (simpler, no preprocessor needed)
+  const cssPath = `${baseWithoutExt}.css`;
+  if (fs.existsSync(cssPath)) {
+    return cssPath;
+  }
+
+  // Check for .scss
+  const scssPath = `${baseWithoutExt}.scss`;
+  if (fs.existsSync(scssPath)) {
+    return scssPath;
+  }
+
+  // Default to .scss for backward compatibility
+  return scssPath;
 }
 
 /**
@@ -154,7 +181,8 @@ function getEntryPoints(
     case 'component': {
       // Components typically have media files
       const jsPath = path.resolve(sourcePath, 'media', 'js', `${name}.ts`);
-      const cssPath = path.resolve(sourcePath, 'media', 'css', `${name}.scss`);
+      const cssBasePath = path.resolve(sourcePath, 'media', 'css', name);
+      const cssPath = resolveCssPath(cssBasePath);
       entries[name] = jsPath;
       entries[`${name}-css`] = cssPath;
       break;
@@ -163,7 +191,8 @@ function getEntryPoints(
     case 'module': {
       // Modules may have media files
       const jsPath = path.resolve(sourcePath, 'media', 'js', `${name}.ts`);
-      const cssPath = path.resolve(sourcePath, 'media', 'css', `${name}.scss`);
+      const cssBasePath = path.resolve(sourcePath, 'media', 'css', name);
+      const cssPath = resolveCssPath(cssBasePath);
       entries[name] = jsPath;
       entries[`${name}-css`] = cssPath;
       break;
@@ -172,7 +201,8 @@ function getEntryPoints(
     case 'plugin': {
       // Plugins may have media files
       const jsPath = path.resolve(sourcePath, 'media', 'js', `${name}.ts`);
-      const cssPath = path.resolve(sourcePath, 'media', 'css', `${name}.scss`);
+      const cssBasePath = path.resolve(sourcePath, 'media', 'css', name);
+      const cssPath = resolveCssPath(cssBasePath);
       entries[name] = jsPath;
       entries[`${name}-css`] = cssPath;
       break;
@@ -181,7 +211,13 @@ function getEntryPoints(
     case 'template': {
       // Templates have their own structure
       const jsPath = path.resolve(sourcePath, 'js', 'template.ts');
-      const cssPath = path.resolve(sourcePath, 'scss', 'template.scss');
+      // For templates, check both scss and css directories
+      const scssBasePath = path.resolve(sourcePath, 'scss', 'template');
+      const cssBasePath = path.resolve(sourcePath, 'css', 'template');
+      // Try scss directory first, then css directory
+      const cssPath = fs.existsSync(path.dirname(scssBasePath))
+        ? resolveCssPath(scssBasePath)
+        : resolveCssPath(cssBasePath);
       entries.template = jsPath;
       entries['template-css'] = cssPath;
       break;
@@ -190,7 +226,8 @@ function getEntryPoints(
     case 'library': {
       // Libraries may have media files
       const jsPath = path.resolve(sourcePath, 'media', 'js', `${name}.ts`);
-      const cssPath = path.resolve(sourcePath, 'media', 'css', `${name}.scss`);
+      const cssBasePath = path.resolve(sourcePath, 'media', 'css', name);
+      const cssPath = resolveCssPath(cssBasePath);
       entries[name] = jsPath;
       entries[`${name}-css`] = cssPath;
       break;

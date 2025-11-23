@@ -13,6 +13,7 @@ Modern CLI tool for Joomla extension development with Vite and Dev Containers.
 - **Multi-Extension Support**: Create components, modules, plugins, templates, and libraries
 - **Hot Module Replacement**: Instant updates during development
 - **Production Ready**: Optimized builds with minification and tree-shaking
+- **Flexible CSS**: Automatic detection of CSS or SCSS files (no preprocessor required for plain CSS)
 - **Easy Distribution**: One-command packaging for Joomla installation
 
 ## Installation

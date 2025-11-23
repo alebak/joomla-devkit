@@ -313,7 +313,8 @@ describe('vite-config.ts', () => {
         const input = config.build?.rollupOptions?.input as Record<string, string>;
 
         expect(input['template']).toContain('/test/js/template.ts');
-        expect(input['template-css']).toContain('/test/scss/template.scss');
+        // CSS path can be either scss/ or css/ depending on which directory exists
+        expect(input['template-css']).toMatch(/\/test\/(scss|css)\/template\.scss/);
       });
 
       it('should generate default entry points for library', () => {
