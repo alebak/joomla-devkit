@@ -295,7 +295,14 @@ export async function createCommand(
 
   // Determine output directory (flat structure)
   const srcDir = config?.srcDir || config?.extensionsDir || 'src';
-  const extensionName = name!; // Extension name includes prefix (com_, mod_, etc.)
+
+  // Build full extension name with prefix
+  let extensionName = name!;
+  if (extensionType === 'plugin' && extensionOptions.pluginGroup) {
+    // Plugins need full name: plg_<group>_<name>
+    extensionName = `plg_${extensionOptions.pluginGroup}_${name}`;
+  }
+
   const outputDir = path.join(process.cwd(), srcDir, extensionName);
 
   // Check if extension already exists
