@@ -10,7 +10,7 @@ import type { UserConfig as ViteConfig } from 'vite';
 /**
  * Extension types supported by jkit
  */
-export type ExtensionType = 'component' | 'module' | 'plugin' | 'template' | 'library';
+export type ExtensionType = 'component' | 'module' | 'plugin' | 'template' | 'library' | 'package';
 
 /**
  * Joomla versions supported by jkit

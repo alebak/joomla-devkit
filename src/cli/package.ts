@@ -7,6 +7,7 @@ import crypto from 'crypto';
 import { createWriteStream } from 'fs';
 import { getI18n } from '../utils/i18n.js';
 import { pathExists, readJsonFile, formatBytes } from '../utils/files.js';
+import { findExtensionPath } from '../utils/extensions.js';
 import type { JkitConfig, ExtensionConfig } from '../types/config.js';
 
 interface PackageOptions {
@@ -45,50 +46,6 @@ async function loadJkitConfig(): Promise<JkitConfig | null> {
   }
 }
 
-/**
- * Finds extension directory
- *
- * @param extensionName - Extension name
- * @param config - Jkit configuration
- * @returns Extension path and config or null
- */
-async function findExtensionPath(
-  extensionName: string,
-  config: JkitConfig
-): Promise<{ path: string; extensionConfig: ExtensionConfig } | null> {
-  const extensionsDir = config.extensionsDir || 'extensions';
-
-  // Search in extension configuration
-  if (config.extensions[extensionName]) {
-    const extConfig = config.extensions[extensionName];
-    const extPath = path.join(
-      process.cwd(),
-      extensionsDir,
-      extConfig.type,
-      extConfig.name
-    );
-
-    if (await pathExists(extPath)) {
-      return { path: extPath, extensionConfig: extConfig };
-    }
-  }
-
-  // Search in all extension types
-  const types = ['component', 'module', 'plugin', 'template', 'library'];
-  for (const type of types) {
-    const extPath = path.join(process.cwd(), extensionsDir, type, extensionName);
-    if (await pathExists(extPath)) {
-      const extConfig = Object.values(config.extensions).find(
-        (ext) => ext.name === extensionName && ext.type === type
-      );
-      if (extConfig) {
-        return { path: extPath, extensionConfig: extConfig };
-      }
-    }
-  }
-
-  return null;
-}
 
 /**
  * Reads manifest XML to extract version
