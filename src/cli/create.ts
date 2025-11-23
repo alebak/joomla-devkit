@@ -9,7 +9,7 @@ import { processTemplateDirectory, templateExists, getTemplateDirectory } from '
 import { pathExists, ensureDir, readJsonFile, writeJsonFile } from '../utils/files.js';
 import type { ExtensionType, CreateExtensionOptions, JkitConfig } from '../types/config.js';
 
-const VALID_TYPES: ExtensionType[] = ['component', 'module', 'plugin', 'template', 'library'];
+const VALID_TYPES: ExtensionType[] = ['component', 'module', 'plugin', 'template', 'library', 'package'];
 
 interface CreateCommandOptions {
   author?: string;

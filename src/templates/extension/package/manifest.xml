@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" method="upgrade">
+    <name>{{PACKAGE_NAME}}</name>
+    <packagename>{{PACKAGE_NAME_LOWER}}</packagename>
+    <creationDate>{{CREATION_DATE}}</creationDate>
+    <author>{{AUTHOR}}</author>
+    <authorEmail>{{AUTHOR_EMAIL}}</authorEmail>
+    <authorUrl>{{AUTHOR_URL}}</authorUrl>
+    <copyright>{{COPYRIGHT}}</copyright>
+    <license>{{LICENSE}}</license>
+    <version>{{VERSION}}</version>
+    <description>{{DESCRIPTION}}</description>
+    <url>{{AUTHOR_URL}}</url>
+    <packager>{{AUTHOR}}</packager>
+    <packagerurl>{{AUTHOR_URL}}</packagerurl>
+
+    <!-- Installation script file -->
+    <scriptfile>script.php</scriptfile>
+
+    <!-- Block child extensions from being uninstalled independently -->
+    <blockChildUninstall>1</blockChildUninstall>
+
+    <!-- Child extensions -->
+    <files folder="packages">
+        <!-- Add your extension packages here -->
+        <!-- Example:
+        <file type="component" id="com_example">com_example.zip</file>
+        <file type="module" id="example" client="site">mod_example.zip</file>
+        <file type="plugin" id="example" group="system">plg_system_example.zip</file>
+        <file type="library" id="example">lib_example.zip</file>
+        <file type="template" id="example" client="site">tpl_example.zip</file>
+        -->
+    </files>
+
+    <updateservers>
+        <!-- Add update server URL if needed -->
+        <!-- <server type="extension" priority="1" name="{{PACKAGE_NAME}}">{{AUTHOR_URL}}/updates/{{PACKAGE_NAME_LOWER}}.xml</server> -->
+    </updateservers>
+</extension>

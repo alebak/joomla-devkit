@@ -55,6 +55,9 @@ jkit create template mytemplate
 
 # Create a library
 jkit create library mylib
+
+# Create a package
+jkit create package pkg_myproject
 ```
 
 ### 4. Start development
@@ -94,12 +97,13 @@ jkit init my-project --author "John Doe" --email "john@example.com" --no-devcont
 
 Create a new Joomla extension.
 
-**Types:** `component`, `module`, `plugin`, `template`, `library`
+**Types:** `component`, `module`, `plugin`, `template`, `library`, `package`
 
 ```bash
 jkit create component com_mycomponent
 jkit create module mod_mymodule --author "John Doe"
 jkit create plugin system myplugin --license MIT
+jkit create package pkg_myproject --description "Multi-extension package"
 # Non-interactive mode (CI/CD friendly)
 jkit create component com_test --author "John Doe" --email "john@example.com" \
   --description "My test component" --namespace "MyCompany\\Component\\Test"
@@ -214,6 +218,46 @@ Edit `jkit.config.json` in your project root:
 5. **Build optimized**: `jkit build`
 6. **Package for distribution**: `jkit package`
 7. **Install in Joomla**: Upload the .zip file
+
+## Working with Packages
+
+Packages allow you to bundle multiple extensions together into a single installable ZIP file.
+
+### Creating a Package
+
+```bash
+# Create a package
+jkit create package pkg_myproject
+
+# Create individual extensions
+jkit create component com_mycomponent
+jkit create module mod_mymodule
+jkit create plugin system myplugin
+```
+
+### Configuring Package Contents
+
+Edit the package's `manifest.xml` to include your extensions:
+
+```xml
+<files folder="packages">
+    <file type="component" id="com_mycomponent">com_mycomponent.zip</file>
+    <file type="module" id="mymodule" client="site">mod_mymodule.zip</file>
+    <file type="plugin" id="myplugin" group="system">plg_system_myplugin.zip</file>
+</files>
+```
+
+### Building and Packaging
+
+```bash
+# Build all extensions
+jkit build
+
+# Create the final package
+jkit package pkg_myproject
+```
+
+**Note**: The package command will automatically include all specified child extensions from the `dist/` directory.
 
 ## Comparison with joomla-gulp
 

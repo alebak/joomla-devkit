@@ -80,6 +80,16 @@ export interface LibraryVariables extends BaseVariables {
 }
 
 /**
+ * Package-specific variables
+ */
+export interface PackageVariables extends BaseVariables {
+  PACKAGE_NAME_LOWER: string;
+  SCRIPT_CLASS: string;
+  JOOMLA_VERSION: string;
+  [key: string]: string;
+}
+
+/**
  * Generates common base variables for all extension types
  *
  * @param options - Extension creation options
@@ -268,6 +278,32 @@ export function generateLibraryVariables(
 }
 
 /**
+ * Generates all variables for a package
+ *
+ * @param name - Package name (without pkg_ prefix)
+ * @param options - Extension creation options
+ * @returns Package variables object
+ */
+export function generatePackageVariables(
+  name: string,
+  options: CreateExtensionOptions
+): PackageVariables {
+  const baseVars = generateBaseVariables(options);
+
+  // Remove pkg_ prefix if present
+  const cleanName = name.replace(/^pkg_/i, '');
+  const className = sanitizeClassName(cleanName);
+  const fileName = sanitizeFileName(cleanName);
+
+  return {
+    ...baseVars,
+    PACKAGE_NAME_LOWER: fileName.toLowerCase(),
+    SCRIPT_CLASS: className,
+    JOOMLA_VERSION: '5.0', // Default to Joomla 5.0, can be overridden
+  };
+}
+
+/**
  * Generates variables based on extension type
  *
  * @param type - Extension type
@@ -294,6 +330,8 @@ export function generateVariables(
       return generateTemplateVariables(name, options);
     case 'library':
       return generateLibraryVariables(name, options);
+    case 'package':
+      return generatePackageVariables(name, options);
     default:
       throw new Error(`Unknown extension type: ${type}`);
   }

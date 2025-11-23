@@ -74,6 +74,14 @@ export interface ExtensionConfig {
     client?: 'site' | 'administrator';
   };
 
+  /** Package-specific configuration */
+  package?: {
+    /** Child extensions included in this package */
+    extensions?: string[];
+    /** Block child extensions from being uninstalled independently */
+    blockChildUninstall?: boolean;
+  };
+
   /** Custom Vite configuration for this extension */
   vite?: ViteConfig;
 }

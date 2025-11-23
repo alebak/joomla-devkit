@@ -18,7 +18,8 @@ export function validateExtensionName(name: string, type: ExtensionType): boolea
     .replace(/^mod_/i, '')
     .replace(/^plg_/i, '')
     .replace(/^lib_/i, '')
-    .replace(/^tpl_/i, '');
+    .replace(/^tpl_/i, '')
+    .replace(/^pkg_/i, '');
 
   // Check if name contains only valid characters (alphanumeric and underscores)
   const validPattern = /^[a-zA-Z][a-zA-Z0-9_]*$/;
@@ -38,6 +39,8 @@ export function validateExtensionName(name: string, type: ExtensionType): boolea
     case 'template':
       return cleanName.length >= 2 && cleanName.length <= 50;
     case 'library':
+      return cleanName.length >= 2 && cleanName.length <= 50;
+    case 'package':
       return cleanName.length >= 2 && cleanName.length <= 50;
     default:
       return false;
