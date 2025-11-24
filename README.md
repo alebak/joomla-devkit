@@ -60,7 +60,9 @@ jkit create library mylib
 jkit create package pkg_myproject
 ```
 
-> 💡 **New to jkit?** Check out our comprehensive step-by-step tutorial: [docs/TUTORIAL.md](docs/TUTORIAL.md) ([Español](docs/TUTORIAL.es.md))
+> 💡 **New to jkit?** Check out our comprehensive step-by-step tutorial:
+> - **GitHub version** (recommended): [docs/TUTORIAL_GITHUB.md](docs/TUTORIAL_GITHUB.md) | [Español](docs/TUTORIAL_GITHUB.es.md)
+> - **Plain text version**: [docs/TUTORIAL.md](docs/TUTORIAL.md) | [Español](docs/TUTORIAL.es.md)
 
 ### 4. Start development
 
