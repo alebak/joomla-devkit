@@ -1,0 +1,209 @@
+name: Sync Documentation to Wiki
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'docs/**'
+      - '.github/workflows/sync-wiki.yml'
+
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync-to-wiki:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Clone wiki repository
+        run: |
+          git clone https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git wiki
+        continue-on-error: true
+
+      - name: Initialize wiki if it doesn't exist
+        run: |
+          if [ ! -d "wiki/.git" ]; then
+            echo "Wiki repository doesn't exist yet. Creating initial structure..."
+            mkdir -p wiki
+            cd wiki
+            git init
+            git remote add origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git
+          fi
+
+      - name: Sync documentation files to wiki
+        run: |
+          cd wiki
+
+          # Copy main tutorial files
+          cp ../docs/TUTORIAL_GITHUB.md ./Tutorial.md
+          cp ../docs/TUTORIAL_GITHUB.es.md ./Tutorial-Spanish.md
+          cp ../docs/TESTING_KNOWN_ISSUES.md ./Testing-Known-Issues.md
+
+          # Create Home page
+          cat > Home.md << 'EOF'
+          # 📚 Welcome to jkit Documentation
+
+          **jkit** (Joomla Development Kit) is a modern CLI tool for Joomla extension development with TypeScript, Vite, and Dev Containers.
+
+          ## 🚀 Quick Start
+
+          New to jkit? Start with our comprehensive tutorials:
+
+          ### Tutorials
+          - **[Complete Tutorial (English)](Tutorial)** - Step-by-step guide with hands-on examples
+          - **[Tutorial Completo (Español)](Tutorial-Spanish)** - Guía paso a paso con ejemplos prácticos
+
+          ### Getting Started in 5 Minutes
+
+          ```bash
+          # Install jkit
+          npm install -g @alebak/jkit
+
+          # Create a new project
+          jkit init my-project
+
+          # Create your first component
+          cd my-project
+          jkit create component com_hello
+
+          # Start development
+          jkit dev
+          ```
+
+          ## 📖 Documentation Sections
+
+          ### For Beginners
+          - [Installation Guide](Tutorial#part-1-installation)
+          - [Create Your First Project](Tutorial#part-2-create-your-first-project)
+          - [Understanding Extensions](Tutorial#part-3-create-extensions)
+
+          ### For Developers
+          - [Development Workflow](Tutorial#part-6-development-and-build)
+          - [Best Practices](Tutorial#part-11-tips-and-best-practices)
+          - [Troubleshooting](Tutorial#part-12-troubleshooting)
+
+          ### Reference
+          - [All Commands](Tutorial#part-10-useful-commands)
+          - [Testing Known Issues](Testing-Known-Issues)
+
+          ## 🌟 Features
+
+          - ✅ **6 Extension Types**: Components, Modules, Plugins, Templates, Libraries, Packages
+          - ✅ **Modern Stack**: TypeScript, Vite, ESM
+          - ✅ **Hot Module Replacement**: Instant feedback during development
+          - ✅ **Dev Containers**: Isolated development environment with Joomla
+          - ✅ **Joomla 4 & 5**: Full support for modern Joomla versions
+          - ✅ **Automated Building**: Build and package with one command
+
+          ## 🎯 Complete Example
+
+          Our tutorial walks you through creating a complete blog system with:
+          - 🔷 Component (com_blog)
+          - 📦 2 Modules (site + admin)
+          - 🔌 2 Plugins (system + content)
+          - 🎨 Template (tpl_blogtheme)
+          - 📚 Library (lib_blogutils)
+          - 📦 Package (pkg_myblog - all-in-one installer)
+
+          ## 🔗 Resources
+
+          - **Repository**: [github.com/alebak/joomla-devkit](https://github.com/alebak/joomla-devkit)
+          - **Issues**: [Report bugs or request features](https://github.com/alebak/joomla-devkit/issues)
+          - **Contributing**: [CONTRIBUTING.md](https://github.com/alebak/joomla-devkit/blob/main/CONTRIBUTING.md)
+          - **Roadmap**: [ROADMAP.md](https://github.com/alebak/joomla-devkit/blob/main/ROADMAP.md)
+
+          ## 📝 License
+
+          GPL-2.0-or-later - See [LICENSE](https://github.com/alebak/joomla-devkit/blob/main/LICENSE) file for details.
+
+          ---
+
+          **Author**: alebak
+          **Last Updated**: $(date +%Y-%m-%d)
+          EOF
+
+          # Create Sidebar navigation
+          cat > _Sidebar.md << 'EOF'
+          ## 📚 Documentation
+
+          **[🏠 Home](Home)**
+
+          ### 🚀 Getting Started
+          - [Tutorial (English)](Tutorial)
+          - [Tutorial (Español)](Tutorial-Spanish)
+
+          ### 📖 Tutorial Sections
+          - [Installation](Tutorial#part-1-installation)
+          - [First Project](Tutorial#part-2-create-your-first-project)
+          - [Create Extensions](Tutorial#part-3-create-extensions)
+          - [Development](Tutorial#part-6-development-and-build)
+          - [Commands](Tutorial#part-10-useful-commands)
+          - [Best Practices](Tutorial#part-11-tips-and-best-practices)
+          - [Troubleshooting](Tutorial#part-12-troubleshooting)
+
+          ### 🔧 Reference
+          - [Testing Issues](Testing-Known-Issues)
+
+          ### 🔗 Links
+          - [Repository](https://github.com/alebak/joomla-devkit)
+          - [Issues](https://github.com/alebak/joomla-devkit/issues)
+          - [Contributing](https://github.com/alebak/joomla-devkit/blob/main/CONTRIBUTING.md)
+          EOF
+
+          # Create Footer
+          cat > _Footer.md << 'EOF'
+          ---
+          💡 **Tip**: Use the sidebar to navigate documentation | 📝 Found an issue? [Report it](https://github.com/alebak/joomla-devkit/issues)
+          EOF
+
+      - name: Configure git for wiki
+        run: |
+          cd wiki
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push changes to wiki
+        run: |
+          cd wiki
+          git add .
+
+          # Check if there are changes to commit
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit"
+          else
+            git commit -m "docs: sync from main repository
+
+          Automated sync from docs/ folder
+
+          Updated files:
+          - Tutorial.md (English)
+          - Tutorial-Spanish.md (Español)
+          - Testing-Known-Issues.md
+          - Home.md
+          - _Sidebar.md
+          - _Footer.md
+
+          Source: ${{ github.repository }}@${{ github.sha }}
+          "
+            git push origin master || git push origin main
+            echo "✅ Wiki synchronized successfully"
+          fi
+
+      - name: Summary
+        run: |
+          echo "## Wiki Sync Complete ✅" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Documentation has been synchronized to the wiki." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**View Wiki**: [https://github.com/${{ github.repository }}/wiki](https://github.com/${{ github.repository }}/wiki)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Synced Files**:" >> $GITHUB_STEP_SUMMARY
+          echo "- Tutorial (English)" >> $GITHUB_STEP_SUMMARY
+          echo "- Tutorial (Español)" >> $GITHUB_STEP_SUMMARY
+          echo "- Testing Known Issues" >> $GITHUB_STEP_SUMMARY

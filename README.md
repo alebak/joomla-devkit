@@ -1,6 +1,6 @@
 # jkit - Joomla Development Kit
 
-**[English](README.md)** | **[Español](README.es.md)**
+**[English](README.md)** | **[Español](README.es.md)** | **[📚 Wiki](https://github.com/alebak/joomla-devkit/wiki)**
 
 Modern CLI tool for Joomla extension development with Vite and Dev Containers.
 
@@ -61,8 +61,9 @@ jkit create package pkg_myproject
 ```
 
 > 💡 **New to jkit?** Check out our comprehensive step-by-step tutorial:
-> - **GitHub version** (recommended): [docs/TUTORIAL_GITHUB.md](docs/TUTORIAL_GITHUB.md) | [Español](docs/TUTORIAL_GITHUB.es.md)
-> - **Plain text version**: [docs/TUTORIAL.md](docs/TUTORIAL.md) | [Español](docs/TUTORIAL.es.md)
+> - **📚 Wiki** (best experience): [Tutorial](https://github.com/alebak/joomla-devkit/wiki/Tutorial) | [Español](https://github.com/alebak/joomla-devkit/wiki/Tutorial-Spanish)
+> - **GitHub docs**: [TUTORIAL_GITHUB.md](docs/TUTORIAL_GITHUB.md) | [Español](docs/TUTORIAL_GITHUB.es.md)
+> - **Plain text**: [TUTORIAL.md](docs/TUTORIAL.md) | [Español](docs/TUTORIAL.es.md)
 
 ### 4. Start development
 
