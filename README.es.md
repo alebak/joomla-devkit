@@ -160,15 +160,15 @@ mi-proyecto/
 ├── .devcontainer/
 │   ├── devcontainer.json
 │   └── docker-compose.yml
-├── extensions/
-│   ├── com_micomponente/
-│   ├── mod_mimodulo/
-│   └── plg_system_miplugin/
-├── src/
-│   ├── assets/
-│   └── shared/
-├── dist/
-├── jkit.config.js
+├── src/                       # Código fuente de extensiones
+│   ├── com_micomponente/     # Componentes
+│   ├── mod_mimodulo/         # Módulos
+│   ├── plg_system_miplugin/  # Plugins
+│   ├── tpl_miplantilla/      # Plantillas
+│   ├── lib_mibiblioteca/     # Bibliotecas
+│   └── pkg_mipaquete/        # Paquetes
+├── dist/                     # Paquetes compilados (.zip)
+├── jkit.config.json
 └── package.json
 ```
 

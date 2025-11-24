@@ -301,6 +301,12 @@ export async function createCommand(
   if (extensionType === 'plugin' && extensionOptions.pluginGroup) {
     // Plugins need full name: plg_<group>_<name>
     extensionName = `plg_${extensionOptions.pluginGroup}_${name}`;
+  } else if (extensionType === 'template') {
+    // Templates need tpl_ prefix
+    extensionName = name!.startsWith('tpl_') ? name! : `tpl_${name}`;
+  } else if (extensionType === 'library') {
+    // Libraries need lib_ prefix
+    extensionName = name!.startsWith('lib_') ? name! : `lib_${name}`;
   }
 
   const outputDir = path.join(process.cwd(), srcDir, extensionName);
