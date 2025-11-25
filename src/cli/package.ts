@@ -234,11 +234,28 @@ async function packageExtension(
     // Copy extension files to staging
     await copyExtensionFiles(extensionPath, stagingDir);
 
+    // For package type, copy all other extension ZIPs to packages/ folder
+    if (extensionConfig.type === 'package') {
+      const packagesDir = path.join(stagingDir, 'packages');
+      await fs.ensureDir(packagesDir);
+
+      // Copy all ZIPs from outputDir except the package itself
+      const zipFiles = await fs.readdir(outputDir).catch(() => []);
+      for (const file of zipFiles) {
+        if (file.endsWith('.zip') && file !== `${extensionConfig.name}.zip`) {
+          const srcPath = path.join(outputDir, file);
+          const destPath = path.join(packagesDir, file);
+          await fs.copy(srcPath, destPath);
+        }
+      }
+    }
+
     // Ensure output directory exists
     await fs.ensureDir(outputDir);
 
     // Generate package filename
-    const zipFilename = `${extensionConfig.type}_${extensionConfig.name}_${version}.zip`;
+    // Use extension name directly (e.g., com_blog.zip, mod_latest.zip)
+    const zipFilename = `${extensionConfig.name}.zip`;
     const zipPath = path.join(outputDir, zipFilename);
 
     // Remove existing package if exists
